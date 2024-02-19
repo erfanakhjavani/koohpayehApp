@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:koohpayeh/features/create_shop.dart';
+import 'package:get/get.dart';
+
 
 
 void main() {
@@ -16,15 +17,16 @@ class Sell_user extends StatefulWidget {
 
 class _Sell_userState extends State<Sell_user> {
 
-  static TextStyle styletext = TextStyle(color: Colors.white,fontFamily: 'Irs',fontSize: 16);
+  static TextStyle styletext = TextStyle(color: Colors.white,fontFamily: 'Irs',fontSize: 14);
   static TextStyle styletext2 = TextStyle(color: Colors.white,fontFamily: 'Irs',fontSize: 20);
+
+
 
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Builder(builder: (context) {
+
+
         return Scaffold(
           appBar: AppBar(
             title: Text('عسل کوهپایه',style: styletext2,),
@@ -61,7 +63,7 @@ class _Sell_userState extends State<Sell_user> {
                       padding: EdgeInsets.all(20),
                       child: TextButton(
                         onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> CreateShop()));
+                            Get.toNamed("/createShop");
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +99,7 @@ class _Sell_userState extends State<Sell_user> {
                           padding: EdgeInsets.all(20),
                           child: TextButton(
                             onPressed: () {
-
+                              Get.toNamed("/StoreList");
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +122,6 @@ class _Sell_userState extends State<Sell_user> {
             ),
           ]),
         );
-      }),
-    );
+
   }
 }
