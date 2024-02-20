@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/bindings/createShopBindings.dart';
-import 'package:koohpayeh/features/sell_user/create_shop.dart';
-import 'package:koohpayeh/premission/sell_user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../features/sell_user/store_list.dart';
-import '../login.dart';
+
 
 
 
@@ -16,14 +12,7 @@ void main(){
 
 }
 
-class superAdmin extends StatefulWidget {
-  const superAdmin({super.key});
-
-  @override
-  State<superAdmin> createState() => _superAdminState();
-}
-
-class _superAdminState extends State<superAdmin> {
+class superAdmin extends StatelessWidget {
 
 
   static TextStyle styletext = TextStyle(color: Colors.white,fontFamily: 'Irs',fontSize: 14);

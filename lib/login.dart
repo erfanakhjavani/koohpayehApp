@@ -58,132 +58,135 @@ class _LoginState extends State<Login> {
         .size
         .height;
 
-              return Scaffold(
-              body: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: SafeArea(
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Lottie.asset('assets/json/honey.json',
-                            height: height * 0.30,
-                            width: double.infinity,
-                            fit: BoxFit.fitHeight),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20.0),
-                          child: Text("به کوهپایه خوش آمدید",
-                              style: TextStyle(
-                                  fontSize: height * 0.029,
-                                  fontFamily: "Irs",
-                                  color: Theme
-                                      .of(context)
-                                      .unselectedWidgetColor,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20.0),
-                          child: Text('ورود',
-                              style: TextStyle(
-                                  fontFamily: 'Irs',
-                                  fontSize: height * 0.03,
-                                  color: Theme
-                                      .of(context)
-                                      .unselectedWidgetColor)),
-                        ),
-                        SizedBox(
-                          height: height * 0.03,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20.0, right: 20),
-                          child: Column(
-                            children: [
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.person),
-                                  hintText: 'نام کاربری',
-                                  hintStyle: style_filed,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(15)),
-                                  ),
-                                ),
-                                controller: _usernameController,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter username';
-                                  } else if (value.length < 4) {
-                                    return 'at least enter 4 characters';
-                                  } else if (value.length > 13) {
-                                    return 'maximum character is 13';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(
-                                height: height * 0.02,
-                              ),
-                              TextFormField(
-                                controller: _passwordController,
-                                obscureText: _isObscure,
-                                decoration: InputDecoration(
-                                  prefixIcon: const Icon(Icons.lock_open),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      _isObscure
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _isObscure = !_isObscure;
-                                      });
-                                    },
-                                  ),
-                                  hintText: 'رمز عبور',
-                                  hintStyle: style_filed,
-                                  border: const OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(15)),
-                                  ),
-                                ),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter some text';
-                                  } else if (value.length < 7) {
-                                    return 'at least enter 6 characters';
-                                  } else if (value.length > 13) {
-                                    return 'maximum character is 13';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(
-                                height: height * 0.01,
-                              ),
-                              SizedBox(
-                                height: height * 0.02,
-                              ),
-                              loginBtn(),
-                            ],
+              return ScaffoldMessenger(
+                key: _messengerKey,
+                child: Scaffold(
+                body: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: SafeArea(
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 30,
                           ),
-                        ),
-                      ],
+                          Lottie.asset('assets/json/honey.json',
+                              height: height * 0.30,
+                              width: double.infinity,
+                              fit: BoxFit.fitHeight),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text("به کوهپایه خوش آمدید",
+                                style: TextStyle(
+                                    fontSize: height * 0.029,
+                                    fontFamily: "Irs",
+                                    color: Theme
+                                        .of(context)
+                                        .unselectedWidgetColor,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text('ورود',
+                                style: TextStyle(
+                                    fontFamily: 'Irs',
+                                    fontSize: height * 0.03,
+                                    color: Theme
+                                        .of(context)
+                                        .unselectedWidgetColor)),
+                          ),
+                          SizedBox(
+                            height: height * 0.03,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0, right: 20),
+                            child: Column(
+                              children: [
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.person),
+                                    hintText: 'نام کاربری',
+                                    hintStyle: style_filed,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15)),
+                                    ),
+                                  ),
+                                  controller: _usernameController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter username';
+                                    } else if (value.length < 4) {
+                                      return 'at least enter 4 characters';
+                                    } else if (value.length > 13) {
+                                      return 'maximum character is 13';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                SizedBox(
+                                  height: height * 0.02,
+                                ),
+                                TextFormField(
+                                  controller: _passwordController,
+                                  obscureText: _isObscure,
+                                  decoration: InputDecoration(
+                                    prefixIcon: const Icon(Icons.lock_open),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _isObscure
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _isObscure = !_isObscure;
+                                        });
+                                      },
+                                    ),
+                                    hintText: 'رمز عبور',
+                                    hintStyle: style_filed,
+                                    border: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15)),
+                                    ),
+                                  ),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter some text';
+                                    } else if (value.length < 7) {
+                                      return 'at least enter 6 characters';
+                                    } else if (value.length > 13) {
+                                      return 'maximum character is 13';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                SizedBox(
+                                  height: height * 0.01,
+                                ),
+                                SizedBox(
+                                  height: height * 0.02,
+                                ),
+                                loginBtn(),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
+                            ),
+              );
 
   }
 
@@ -247,7 +250,6 @@ class _LoginState extends State<Login> {
         loginJson["success"], loginJson["message"],);
 
       if (model.success == true) {
-        //ShowMySnackBar(context, model.message);
          savedLogin(model.success);
 
 

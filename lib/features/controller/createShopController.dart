@@ -1,22 +1,36 @@
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../sell_user/selleradd.dart';
+
+
 
 class createShopController extends GetxController{
-  int indexCard = 1;
 
 
-  void increment(){
-    indexCard++;
+  RxList<CardWidget> cards = <CardWidget>[CardWidget()].obs;
+
+
+
+  List<bool> isSelected = [false, false, false, false];
+
+  void select(){
+    isSelected;
     update();
   }
 
-
-  void decrement(){
-    indexCard--;
-    if (indexCard == 0) {
-       indexCard = indexCard + 1;
-
-    }
+  void addCard() {
+    cards.add(CardWidget());
     update();
   }
+  void removeCard(CardWidget card) {
+    cards.remove(card);
+    update();
+  }
+  bool validateAll() {
+    return cards.every((card) => card.key.currentState!.validate());
+  }
+
+
 
 }

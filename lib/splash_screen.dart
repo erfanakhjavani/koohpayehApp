@@ -42,9 +42,11 @@ class Splash extends StatelessWidget {
             var loggedInState = sharedPreferences.getBool("LoggedIn") ?? false;
 
             if(loggedInState){
-              return superAdmin();
+              return //Login();
+              superAdmin();
             }else{
-              return Login();
+              return //superAdmin();
+              Login();
             }
           }else{
             return Center(

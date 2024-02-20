@@ -132,7 +132,7 @@ class Store_list extends GetView<listShopController> {
                             IconButton(
                               icon: Icon(Icons.edit),
                               onPressed: () {
-                                Get.to(CreateShop(user: controller.users[index]));
+                                //Get.to(CreateShop(user: controller.users[index]));
                               },
                             ),
                             IconButton(

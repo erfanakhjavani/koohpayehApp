@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: any
   lottie: any
   flutter_svg: any
-  http: any
+  http: ^0.13.3
   shared_preferences: any
   splash_screen_view: any
   flutter_launcher_icons: any
