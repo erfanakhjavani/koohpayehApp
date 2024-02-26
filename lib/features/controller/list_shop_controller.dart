@@ -1,30 +1,27 @@
+
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
+import '../../api/list_store.dart';
 import '../../model/SellUserModel/storeListModel.dart';
 
 class listShopController extends GetxController{
   var users = <storeListModel>[].obs;
+  late Future<List<storeListModel>> futureStores;
 
   @override
   void onInit() {
-    users.addAll([
-      storeListModel(id: "1",
-          storeName: 'محصولات ارگانیک',
-          malekName: "حسینی",
-          metraj: "15",
-          phone: "09159831747",
-          sabeghe: "20",
-          VitPhone: "09159831747"),
-      storeListModel(id: "2",
-          storeName: 'محصولات ارگانیک',
-          malekName: "حسینی",
-          metraj: "15",
-          phone: "09159831747",
-          sabeghe: "20",
-          VitPhone: "09159831747"),
-    ]);
+    super.onInit();
+    futureStores = getData();
+    update();
   }
 
-
+  Future<List<storeListModel>> fetchData() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      throw Exception('No Internet');
+    }
+    return getData();
+  }
   void deleteUser(storeListModel user) {
     users.remove(user);
     update();

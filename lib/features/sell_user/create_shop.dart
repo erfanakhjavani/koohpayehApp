@@ -4,16 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/cemeraController.dart';
 import 'package:koohpayeh/features/controller/createShopController.dart';
-import '../../api/api.dart';
+import '../../api/create_store.dart';
 
 final _messengerKey = GlobalKey<ScaffoldMessengerState>();
 
 class CreateShop extends StatelessWidget {
 
 
-  late File uploadImage;
 
-  bool loadP = false;
+
 
   static TextStyle style_filed = TextStyle(
       fontFamily: 'Irs',
@@ -39,7 +38,6 @@ class CreateShop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-
     return ScaffoldMessenger(
         key: _messengerKey,
         child: Directionality(
@@ -106,8 +104,7 @@ class CreateShop extends StatelessWidget {
                                               title: Text('انتخاب از گالری'),
                                               onTap: () {
                                                 controller.chooseImageG();
-                                                uploadImage =
-                                                    controller.uploadImage;
+
 
                                               },
                                             ),
@@ -116,8 +113,6 @@ class CreateShop extends StatelessWidget {
                                               title: Text('دوربین'),
                                               onTap: () {
                                                 controller.chooseImageC();
-                                                uploadImage =
-                                                    controller.uploadImage;
 
 
                                               },
@@ -127,9 +122,6 @@ class CreateShop extends StatelessWidget {
                                       ),
 
                                     );
-                                    if(controller.load == true){
-                                      loadP = true;
-                                    };
                                   },
                                   height: 50,
                                   minWidth: 120,
@@ -341,74 +333,82 @@ class CreateShop extends StatelessWidget {
                   ),
                   GetBuilder<createShopController>(
                       builder: (controller) {
-                    return SizedBox(
-                      width: double.infinity,
-                      height: 55,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromRGBO(62, 88, 20, 1.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                        ),
-                        onPressed: () {
-                         if(loadP == false){
-                           ShowMySnackBar(
-                               context, "لطفا عکس فروشگاه را وارد نمایید");
-                         } else if (_nameStoreController.text == "") {
-                            // error
-                            ShowMySnackBar(
-                                context, "لطفا نام فروشگاه را وارد نمایید");
-                          } else if (_nameMalekController.text == "") {
-                            // error
-                            ShowMySnackBar(
-                                context, "لطفا نام مالک را وارد نمایید");
-                          } else if (_phoneController.text == "") {
-                            // error
-                            ShowMySnackBar(
-                                context, "لطفا شماره تلفن را وارد نمایید");
-                          } else if (_virphoneController.text == "") {
-                            // error
-                            ShowMySnackBar(context,
-                                "لطفا شماره تلفن مجازی را وارد نمایید");
-                          } else if (metrazhController == "") {
-                            // error
-                            ShowMySnackBar(
-                                context, "لطفا متراژ را وارد نمایید");
-                          } else if (_historyController.text == "") {
-                            // error
-                            ShowMySnackBar(
-                                context, "لطفا سابقه فروشگاه را وارد نمایید");
-                          } else if (_addressController.text == "") {
-                            // error
-                            ShowMySnackBar(
-                                context, "لطفا آدرس فروشگاه را وارد نمایید");
-                          } else {
-                            sendCreateShopRequest(
-                              context: context,
-                              malekName: _nameMalekController.text,
-                              imageFile: uploadImage,
-                              phone: _phoneController.text,
-                              address: _addressController.text,
-                              metraj: metrazhController.text,
-                              storeName: _nameStoreController.text,
-                              majaziPhone: _virphoneController.text,
-                              sabeghe: _historyController.text,
-                              ishashiehKhiabani: controller.isSelected[0],
-                              isnabshtai: controller.isSelected[1],
-                              isbonbasti: controller.isSelected[2],
-                              ismaleki: controller.isSelected[3],
-                            );
+                    return GetBuilder<cameraAgalleryController>(
+                      builder: (ccontroller) {
+                        return SizedBox(
+                          width: double.infinity,
+                          height: 55,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(62, 88, 20, 1.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            onPressed: () {
+                             if(ccontroller.load == false){
+                               ShowMySnackBar(
+                                   context, "لطفا عکس فروشگاه را وارد نمایید");
+                             } else if (_nameStoreController.text == "") {
+                                // error
+                                ShowMySnackBar(
+                                    context, "لطفا نام فروشگاه را وارد نمایید");
+                              } else if (_nameMalekController.text == "") {
+                                // error
+                                ShowMySnackBar(
+                                    context, "لطفا نام مالک را وارد نمایید");
+                              } else if (_phoneController.text == "") {
+                                // error
+                                ShowMySnackBar(
+                                    context, "لطفا شماره تلفن را وارد نمایید");
+                              } else if (_virphoneController.text == "") {
+                                // error
+                                ShowMySnackBar(context,
+                                    "لطفا شماره تلفن مجازی را وارد نمایید");
+                              } else if (metrazhController == "") {
+                                // error
+                                ShowMySnackBar(
+                                    context, "لطفا متراژ را وارد نمایید");
+                              } else if (_historyController.text == "") {
+                                // error
+                                ShowMySnackBar(
+                                    context, "لطفا سابقه فروشگاه را وارد نمایید");
+                              } else if (_addressController.text == "") {
+                                // error
+                                ShowMySnackBar(
+                                    context, "لطفا آدرس فروشگاه را وارد نمایید");
+                              } else {
+                                sendCreateShopRequest(
+                                  context: context,
+                                  malekName: _nameMalekController.text,
+                                  imageFile: ccontroller.uploadImage,
+                                  phone: _phoneController.text,
+                                  address: _addressController.text,
+                                  metraj: metrazhController.text,
+                                  storeName: _nameStoreController.text,
+                                  majaziPhone: _virphoneController.text,
+                                  sabeghe: _historyController.text,
+                                  ishashiehKhiabani: controller.isSelected[0],
+                                  isnabshtai: controller.isSelected[1],
+                                  isbonbasti: controller.isSelected[2],
+                                  ismaleki: controller.isSelected[3],
+                                  // name: controller.card.nameSellerController.text,
+                                  // number: controller.card.phoneSellerController.text,
+                                  // family: controller.card.familySellerController.text,
 
-                            //send request
-                          }
-                        },
-                        child: Text(
-                          'ذخیره',
-                          style: style_button,
-                        ),
-                      ),
+                                );
+
+                                //send request
+                              }
+                            },
+                            child: Text(
+                              'ذخیره',
+                              style: style_button,
+                            ),
+                          ),
+                        );
+                      }
                     );
                   })
                 ]),

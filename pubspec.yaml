@@ -37,13 +37,16 @@ dependencies:
   cupertino_icons: any
   lottie: any
   flutter_svg: any
-  http: ^0.13.3
+
   shared_preferences: any
   splash_screen_view: any
   flutter_launcher_icons: any
   image_picker: any
   get: any
-  loading_animation_widget: ^1.2.0+4
+  loading_animation_widget: any
+  shimmer: any
+  connectivity: any
+
 
 
 
@@ -52,7 +55,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
+  url_launcher: ^6.0.1
 
 flutter_icons:
   android: "launcher_icon"
@@ -92,6 +95,7 @@ flutter:
      - assets/images/honeycreate.svg
      - assets/images/exit.svg
      - assets/images/reports.svg
+     - assets/images/sample.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

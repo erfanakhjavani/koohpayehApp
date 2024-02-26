@@ -26,8 +26,8 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    namespace "koohpayeh.co.koohpayeh"
-    compileSdkVersion flutter.compileSdkVersion
+    namespace "koohpayeh.co"
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {

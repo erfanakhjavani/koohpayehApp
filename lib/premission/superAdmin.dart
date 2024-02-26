@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:koohpayeh/features/helpers/example/example2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -30,6 +31,7 @@ class superAdmin extends StatelessWidget {
             ),
             drawer: Drawer(),
             body: Column(children: <Widget>[
+
               // سطر اول
 
               Container(
@@ -44,7 +46,7 @@ class superAdmin extends StatelessWidget {
 
                         decoration: BoxDecoration(
 
-                            color: Colors.black,
+                            color: Color.fromRGBO(38, 38, 38, 1.0),
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
@@ -57,7 +59,9 @@ class superAdmin extends StatelessWidget {
                         margin: EdgeInsets.fromLTRB(8, 8, 4, 8),
                         padding: EdgeInsets.all(20),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(StoreListPage());
+                          },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -78,7 +82,7 @@ class superAdmin extends StatelessWidget {
 
                         decoration: BoxDecoration(
 
-                            color: Colors.black,
+                            color: Color.fromRGBO(38, 38, 38, 1.0),
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
@@ -92,7 +96,6 @@ class superAdmin extends StatelessWidget {
                         padding: EdgeInsets.all(20),
                         child: TextButton(
                           onPressed: () {
-
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -124,7 +127,7 @@ class superAdmin extends StatelessWidget {
 
                         decoration: BoxDecoration(
 
-                            color: Colors.black,
+                            color: Color.fromRGBO(38, 38, 38, 1.0),
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
@@ -158,7 +161,7 @@ class superAdmin extends StatelessWidget {
 
                         decoration: BoxDecoration(
 
-                            color: Colors.black,
+                            color: Color.fromRGBO(38, 38, 38, 1.0),
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
@@ -204,7 +207,7 @@ class superAdmin extends StatelessWidget {
 
                         decoration: BoxDecoration(
 
-                            color: Colors.black,
+                            color: Color.fromRGBO(38, 38, 38, 1.0),
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
@@ -240,7 +243,7 @@ class superAdmin extends StatelessWidget {
 
                         decoration: BoxDecoration(
 
-                            color: Colors.black,
+                            color: Color.fromRGBO(87, 18, 18, 1.0),
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(

@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../sell_user/selleradd.dart';
+import '../sell_user/seller_add.dart';
 
 
 
@@ -10,7 +11,7 @@ class createShopController extends GetxController{
 
   RxList<CardWidget> cards = <CardWidget>[CardWidget()].obs;
 
-
+  late CardWidget card;
 
   List<bool> isSelected = [false, false, false, false];
 

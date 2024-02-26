@@ -1,14 +1,18 @@
 import 'dart:convert';
+
 import 'package:get/get.dart';
-import 'package:koohpayeh/premission/superAdmin.dart';
+import 'package:http/http.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'model/LoginResponseModel.dart';
 
+
 class Login extends StatefulWidget {
+
+
+
 
 
   @override
@@ -17,12 +21,14 @@ class Login extends StatefulWidget {
 
 late String username , password;
 
-var _usernameController = TextEditingController();
-var _passwordController = TextEditingController();
 
 final _messengerKey = GlobalKey<ScaffoldMessengerState>();
 
 class _LoginState extends State<Login> {
+
+
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
 
   bool _isObscure = true;
@@ -58,137 +64,124 @@ class _LoginState extends State<Login> {
         .size
         .height;
 
-              return ScaffoldMessenger(
-                key: _messengerKey,
-                child: Scaffold(
-                body: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: SafeArea(
-                    child: Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Lottie.asset('assets/json/honey.json',
-                              height: height * 0.30,
-                              width: double.infinity,
-                              fit: BoxFit.fitHeight),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text("به کوهپایه خوش آمدید",
-                                style: TextStyle(
-                                    fontSize: height * 0.029,
-                                    fontFamily: "Irs",
-                                    color: Theme
-                                        .of(context)
-                                        .unselectedWidgetColor,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('ورود',
-                                style: TextStyle(
-                                    fontFamily: 'Irs',
-                                    fontSize: height * 0.03,
-                                    color: Theme
-                                        .of(context)
-                                        .unselectedWidgetColor)),
-                          ),
-                          SizedBox(
-                            height: height * 0.03,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0, right: 20),
-                            child: Column(
-                              children: [
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.person),
-                                    hintText: 'نام کاربری',
-                                    hintStyle: style_filed,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15)),
-                                    ),
-                                  ),
-                                  controller: _usernameController,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter username';
-                                    } else if (value.length < 4) {
-                                      return 'at least enter 4 characters';
-                                    } else if (value.length > 13) {
-                                      return 'maximum character is 13';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                SizedBox(
-                                  height: height * 0.02,
-                                ),
-                                TextFormField(
-                                  controller: _passwordController,
-                                  obscureText: _isObscure,
-                                  decoration: InputDecoration(
-                                    prefixIcon: const Icon(Icons.lock_open),
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        _isObscure
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _isObscure = !_isObscure;
-                                        });
-                                      },
-                                    ),
-                                    hintText: 'رمز عبور',
-                                    hintStyle: style_filed,
-                                    border: const OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15)),
-                                    ),
-                                  ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter some text';
-                                    } else if (value.length < 7) {
-                                      return 'at least enter 6 characters';
-                                    } else if (value.length > 13) {
-                                      return 'maximum character is 13';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                SizedBox(
-                                  height: height * 0.01,
-                                ),
-                                SizedBox(
-                                  height: height * 0.02,
-                                ),
-                                loginBtn(),
-                              ],
+
+    return ScaffoldMessenger(
+      key: _messengerKey,
+      child: Scaffold(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: SafeArea(
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Lottie.asset('assets/json/honey.json',
+                      height: height * 0.30,
+                      width: double.infinity,
+                      fit: BoxFit.fitHeight),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Text("به کوهپایه خوش آمدید",
+                        style: TextStyle(
+                            fontSize: height * 0.029,
+                            fontFamily: "Irs",
+                            color: Theme
+                                .of(context)
+                                .unselectedWidgetColor,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Text('ورود',
+                        style: TextStyle(
+                            fontFamily: 'Irs',
+                            fontSize: height * 0.03,
+                            color: Theme
+                                .of(context)
+                                .unselectedWidgetColor)),
+                  ),
+                  SizedBox(
+                    height: height * 0.03,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            hintText: 'نام کاربری',
+                            hintStyle: style_filed,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(15)),
                             ),
                           ),
-                        ],
-                      ),
+                          controller: _usernameController,
+                          validator: (value) {
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        TextFormField(
+                          controller: _passwordController,
+                          obscureText: _isObscure,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.lock_open),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _isObscure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isObscure = !_isObscure;
+                                });
+                              },
+                            ),
+                            hintText: 'رمز عبور',
+                            hintStyle: style_filed,
+                            border: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(15)),
+                            ),
+                          ),
+                          validator: (value) {
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: height * 0.01,
+                        ),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        loginBtn(),
+                      ],
                     ),
                   ),
-                ),
-                            ),
-              );
-
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
+
 
   Widget loginBtn() {
     return SizedBox(
@@ -203,6 +196,14 @@ class _LoginState extends State<Login> {
           ),
         ),
         onPressed: () {
+          if(_usernameController.text == ""){
+            ShowMySnackBar(
+                context, "لطفا نام کاربری را وارد کنید");
+          } else if (_passwordController.text == "") {
+            // error
+            ShowMySnackBar(
+                context, "لطفا رمز عبور را وارد کنید");
+          }
           sendLoginRequest(
               context: context,
               username: _usernameController.text,
@@ -214,7 +215,8 @@ class _LoginState extends State<Login> {
         child: AnimatedCrossFade(
           firstChild: Text(
             'ورود',
-            style: TextStyle(fontSize: 20, color: Colors.white,fontFamily: "Irs"),
+            style: TextStyle(
+                fontSize: 20, color: Colors.white, fontFamily: "Irs"),
 
 
           ),
@@ -228,43 +230,71 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void sendLoginRequest(
-      {required BuildContext context, required String username, required String password}) async {
-    var body = Map<String, dynamic>();
-
-    body["username"] = username;
-    body["password"] = password;
-
-    var response = await post(
-        Uri.parse('https://crm.koohpayeh.co/api/loginimda'), body: body);
-
-    if (response.statusCode == 200) {
-      setState(() {
-        isFirst = true;
-      });
-
-      // Result
-
-      var loginJson = json.decode(utf8.decode(response.bodyBytes));
-      var model = LoginResponseModel(
-        loginJson["success"], loginJson["message"],);
-
-      if (model.success == true) {
-         savedLogin(model.success);
+  Future<void> sendLoginRequest(
+      {required BuildContext context, required String username, required String password,}) async {
+    try {
+      final response = await post(
+        Uri.parse('https://crm.koohpayeh.co/api/loginimda'),
+        body: {'username': username, 'password': password},
+      );
 
 
-        print("password = " + model.message);
+      if (response.statusCode == 200) {
+        setState(() {
+          isFirst = true;
+        });
 
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> superAdmin()));
+        var loginJson = json.decode(utf8.decode(response.bodyBytes));
+        var model = LoginResponseModel(
+            success: loginJson["success"],
+            message: loginJson["message"],
+            data: User.fromJson(loginJson['data']));
 
-      } else {
-        ShowMySnackBar(context, model.message);
+
+        if (model.success == true) {
+          savedLogin(model.success);
+
+
+          Get.offAllNamed("/splash");
+
+          print('Login successful!');
+          print('User data:');
+          print('ID: ${model.data.id}');
+          print('Name: ${model.data.name}');
+          print('Family: ${model.data.family}');
+          print('Phone: ${model.data.phone}');
+          print('Role ID: ${model.data.roleId}');
+          print('Image: ${model.data.image}');
+          print('City ID: ${model.data.cityId}');
+          print('Created at: ${model.data.createdAt}');
+          print('Updated at: ${model.data.updatedAt}');
+          print('Token: ${model.data.token}');
+
+
+          final prefs = await SharedPreferences.getInstance();
+
+          await prefs.setString('logintoken', model.data.token);
+          await prefs.setString('role_id', model.data.roleId);
+          await prefs.setString('name', model.data.name);
+          await prefs.setString('family', model.data.family);
+          await prefs.setString('phone', model.data.phone);
+          await prefs.setString('token', model.data.token);
+        }
+        else if (model.success) {
+          print(model.message);
+          ShowMySnackBar(context, model.message);
+        }
       }
-    } else {
-      ShowMySnackBar(context, "خطایی در ارتباط با سرور رخ داده است");
+    } catch (e) {
+      ShowMySnackBar(context, "نام کاربری یا رمز عبور اشتباه است");
     }
   }
 
+  Future <void> savedLogin(model) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    prefs.setBool("LoggedIn", model);
+  }
 
   void ShowMySnackBar(BuildContext context, String message) {
     _messengerKey.currentState!.showSnackBar(Get.snackbar(
@@ -294,13 +324,4 @@ class _LoginState extends State<Login> {
   }
 
 
-
-
-
-
-Future <void> savedLogin(model) async{
-    final prefs = await SharedPreferences.getInstance();
-
-    prefs.setBool("LoggedIn", model);
-}
 }

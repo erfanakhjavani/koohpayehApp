@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:koohpayeh/login.dart';
-import 'package:koohpayeh/premission/superAdmin.dart';
+import 'package:koohpayeh/premission/switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 
@@ -40,10 +40,11 @@ class Splash extends StatelessWidget {
           if(snapshot.hasData){
             SharedPreferences sharedPreferences = snapshot.data!;
             var loggedInState = sharedPreferences.getBool("LoggedIn") ?? false;
+            var logeedrole = sharedPreferences.getString('role_id') ?? '';
 
             if(loggedInState){
               return //Login();
-              superAdmin();
+              navigateUserBasedOnRole(logeedrole, context);
             }else{
               return //superAdmin();
               Login();
