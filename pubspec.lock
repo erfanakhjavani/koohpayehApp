@@ -440,6 +440,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
+  persian_number_utility:
+    dependency: "direct main"
+    description:
+      name: persian_number_utility
+      sha256: d171732c8d6bd1b710de3d4b4f11c8d326e20e9c462968df78c5358dcbc189b4
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.4"
   petitparser:
     dependency: transitive
     description:
@@ -528,14 +536,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
-  shimmer:
-    dependency: "direct main"
-    description:
-      name: shimmer
-      sha256: "5f88c883a22e9f9f299e5ba0e4f7e6054857224976a5d9f839d4ebdc94a14ac9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/sell_user/seller_add.dart';
-import 'package:koohpayeh/premission/sell_user.dart';
-import 'package:koohpayeh/premission/superAdmin.dart';
+import 'package:koohpayeh/premission/sales_expert.dart';
+import 'package:koohpayeh/premission/super_admin.dart';
 import 'package:koohpayeh/splash_screen.dart';
-import 'features/bindings/myBidings.dart';
-import 'features/sell_user/create_shop.dart';
-import 'features/sell_user/store_list.dart';
+import 'features/bindings/my_bidings.dart';
+import 'features/presentions/area_supervisor/create_shop.dart';
+import 'features/presentions/area_supervisor/seller_add.dart';
+import 'features/presentions/area_supervisor/store_list.dart';
 import 'login.dart';
 
 
@@ -28,12 +28,12 @@ void main() {
         debugShowCheckedModeBanner: false,
         initialBinding: MyBindings(),
         getPages:[
-          GetPage(name: '/superadmin', page: ()=> superAdmin()),
+          GetPage(name: '/super_admin', page: ()=> SuperAdmin()),
           GetPage(name: '/login', page: ()=> Login()),
-          GetPage(name: '/selluser', page: ()=> Sell_user()),
-          GetPage(name: '/createseller', page: ()=> createSeller()),
-          GetPage(name: "/createShop",page: ()=> CreateShop()),
-          GetPage(name: "/StoreList",page: ()=> Store_list()),
+          GetPage(name: '/seles_expert', page: ()=> SelesExpert()),
+          GetPage(name: '/create_seller', page: ()=> createSeller()),
+     //     GetPage(name: "/create_shop",page: ()=> CreateShop()),
+          GetPage(name: "/store-list",page: ()=> Store_list()),
           GetPage(name: "/splash",page: ()=> Splash()),
         ],
         home: Splash(),

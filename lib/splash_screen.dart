@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:koohpayeh/login.dart';
-import 'package:koohpayeh/premission/switch.dart';
+import 'package:koohpayeh/switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
+
+import 'features/presentions/area_supervisor/seller_add.dart';
+
 
 void main() {
   runApp(Splash() );
@@ -40,7 +43,8 @@ class Splash extends StatelessWidget {
           if(snapshot.hasData){
             SharedPreferences sharedPreferences = snapshot.data!;
             var loggedInState = sharedPreferences.getBool("LoggedIn") ?? false;
-            var logeedrole = sharedPreferences.getString('role_id') ?? '';
+            var logeedrole = sharedPreferences.getString('role') ?? '';
+            clearDataSeller();
 
             if(loggedInState){
               return //Login();

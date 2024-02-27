@@ -1,35 +1,28 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
+import 'package:koohpayeh/splash_screen.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'model/LoginResponseModel.dart';
 
+import 'model/login/login_response_model.dart';
 
 class Login extends StatefulWidget {
-
-
-
-
-
   @override
   _LoginState createState() => _LoginState();
 }
 
-late String username , password;
-
+late String username, password;
 
 final _messengerKey = GlobalKey<ScaffoldMessengerState>();
 
 class _LoginState extends State<Login> {
-
-
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-
+  late bool isFirst;
 
   bool _isObscure = true;
 
@@ -37,10 +30,9 @@ class _LoginState extends State<Login> {
   void initState() {
     username = "";
     password = "";
-
+    isFirst = true;
     super.initState();
   }
-
 
   static TextStyle style_filed = TextStyle(
       fontFamily: 'Irs',
@@ -53,17 +45,9 @@ class _LoginState extends State<Login> {
       color: Colors.white,
       fontWeight: FontWeight.w200);
 
-
-  bool isFirst = true;
-
-
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height;
-
+    var height = MediaQuery.of(context).size.height;
 
     return ScaffoldMessenger(
       key: _messengerKey,
@@ -92,9 +76,7 @@ class _LoginState extends State<Login> {
                         style: TextStyle(
                             fontSize: height * 0.029,
                             fontFamily: "Irs",
-                            color: Theme
-                                .of(context)
-                                .unselectedWidgetColor,
+                            color: Theme.of(context).unselectedWidgetColor,
                             fontWeight: FontWeight.bold)),
                   ),
                   const SizedBox(
@@ -106,9 +88,7 @@ class _LoginState extends State<Login> {
                         style: TextStyle(
                             fontFamily: 'Irs',
                             fontSize: height * 0.03,
-                            color: Theme
-                                .of(context)
-                                .unselectedWidgetColor)),
+                            color: Theme.of(context).unselectedWidgetColor)),
                   ),
                   SizedBox(
                     height: height * 0.03,
@@ -123,8 +103,8 @@ class _LoginState extends State<Login> {
                             hintText: 'نام کاربری',
                             hintStyle: style_filed,
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(15)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
                             ),
                           ),
                           controller: _usernameController,
@@ -155,8 +135,8 @@ class _LoginState extends State<Login> {
                             hintText: 'رمز عبور',
                             hintStyle: style_filed,
                             border: const OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(15)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
                             ),
                           ),
                           validator: (value) {
@@ -182,13 +162,11 @@ class _LoginState extends State<Login> {
     );
   }
 
-
   Widget loginBtn() {
     return SizedBox(
       width: double.infinity,
       height: 55,
       child: ElevatedButton(
-
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color.fromRGBO(62, 88, 20, 1.0),
           shape: RoundedRectangleBorder(
@@ -196,13 +174,11 @@ class _LoginState extends State<Login> {
           ),
         ),
         onPressed: () {
-          if(_usernameController.text == ""){
-            ShowMySnackBar(
-                context, "لطفا نام کاربری را وارد کنید");
+          if (_usernameController.text == "") {
+            ShowMySnackBar(context, "لطفا نام کاربری را وارد کنید");
           } else if (_passwordController.text == "") {
             // error
-            ShowMySnackBar(
-                context, "لطفا رمز عبور را وارد کنید");
+            ShowMySnackBar(context, "لطفا رمز عبور را وارد کنید");
           }
           sendLoginRequest(
               context: context,
@@ -215,51 +191,52 @@ class _LoginState extends State<Login> {
         child: AnimatedCrossFade(
           firstChild: Text(
             'ورود',
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontFamily: "Irs"),
-
-
+            style:
+                TextStyle(fontSize: 20, color: Colors.white, fontFamily: "Irs"),
           ),
           secondChild: LoadingAnimationWidget.fourRotatingDots(
               color: Colors.white, size: 20),
-          crossFadeState: isFirst ? CrossFadeState.showFirst : CrossFadeState
-              .showSecond,
+          crossFadeState:
+              isFirst ? CrossFadeState.showFirst : CrossFadeState.showSecond,
           duration: Duration(milliseconds: 100),
         ),
       ),
     );
   }
 
-  Future<void> sendLoginRequest(
-      {required BuildContext context, required String username, required String password,}) async {
+  Future<void> sendLoginRequest({
+    required BuildContext context,
+    required String username,
+    required String password,
+  }) async {
     try {
       final response = await post(
         Uri.parse('https://crm.koohpayeh.co/api/loginimda'),
         body: {'username': username, 'password': password},
       );
 
-
       if (response.statusCode == 200) {
-        setState(() {
-          isFirst = true;
-        });
-
         var loginJson = json.decode(utf8.decode(response.bodyBytes));
         var model = LoginResponseModel(
             success: loginJson["success"],
             message: loginJson["message"],
-            data: User.fromJson(loginJson['data']));
+            data: User.fromJson(loginJson['data']),
+            role: loginJson['role']);
 
+        setState(() {
+          isFirst = true;
+        });
 
         if (model.success == true) {
           savedLogin(model.success);
 
 
-          Get.offAllNamed("/splash");
+          Get.off(Splash());
 
           print('Login successful!');
           print('User data:');
           print('ID: ${model.data.id}');
+          print('Role: ${model.role}');
           print('Name: ${model.data.name}');
           print('Family: ${model.data.family}');
           print('Phone: ${model.data.phone}');
@@ -270,27 +247,30 @@ class _LoginState extends State<Login> {
           print('Updated at: ${model.data.updatedAt}');
           print('Token: ${model.data.token}');
 
-
           final prefs = await SharedPreferences.getInstance();
 
-          await prefs.setString('logintoken', model.data.token);
-          await prefs.setString('role_id', model.data.roleId);
-          await prefs.setString('name', model.data.name);
-          await prefs.setString('family', model.data.family);
-          await prefs.setString('phone', model.data.phone);
           await prefs.setString('token', model.data.token);
-        }
-        else if (model.success) {
+          await prefs.setString('role', model.role);
+          await prefs.setString('nameuser', model.data.name);
+          await prefs.setString('familyUser', model.data.family);
+          await prefs.setString('phoneUser', model.data.phone);
+        } else {
           print(model.message);
           ShowMySnackBar(context, model.message);
         }
+      } else {
+
+        ShowMySnackBar(context, "لطفا اینترنت را بررسی کنید.");
       }
     } catch (e) {
+      setState(() {
+        isFirst = true;
+      });
       ShowMySnackBar(context, "نام کاربری یا رمز عبور اشتباه است");
     }
   }
 
-  Future <void> savedLogin(model) async {
+  Future<void> savedLogin(model) async {
     final prefs = await SharedPreferences.getInstance();
 
     prefs.setBool("LoggedIn", model);
@@ -322,6 +302,4 @@ class _LoginState extends State<Login> {
       duration: Duration(seconds: 3),
     ) as SnackBar);
   }
-
-
 }
