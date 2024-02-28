@@ -30,15 +30,15 @@ class CreateShop extends StatelessWidget {
       color: Colors.white,
       fontWeight: FontWeight.w200);
 
-  TextEditingController _nameStoreController = TextEditingController();
-  TextEditingController _nameMalekController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _virphoneController = TextEditingController();
-  TextEditingController metrazhController = TextEditingController();
-  TextEditingController _historyController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
+  final TextEditingController _nameStoreController = TextEditingController();
+  final TextEditingController _nameMalekController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _virphoneController = TextEditingController();
+  final TextEditingController metrazhController = TextEditingController();
+  final TextEditingController _historyController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
-  var isIndicator;
+
 
   @override
   Widget build(BuildContext context) {

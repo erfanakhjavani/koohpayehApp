@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import 'package:koohpayeh/features/presentions/drawer.dart';
+import 'package:koohpayeh/features/presentions/text_style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/presentions/area_supervisor/store_list.dart';
@@ -24,7 +25,7 @@ class AreaSupervisor extends StatelessWidget {
     return Scaffold(
       drawer: drawer(),
       appBar: AppBar(
-        title: Text('سرپرست فروش در منطقه',style: styletext2,),
+        title: Text('سرپرست فروش در منطقه',style: appbar,),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(62, 88, 20, 1.0),
         elevation: 1.5,

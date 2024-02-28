@@ -8,6 +8,8 @@ import '../../../model/area_supervisor_model/storeListModel.dart';
 class listShopController extends GetxController{
   var users = <storeListModel>[].obs;
   late Future<List<storeListModel>> futureStores;
+  String searchValue = '';
+
 
   @override
   void onInit() {
@@ -15,6 +17,15 @@ class listShopController extends GetxController{
     futureStores = getData();
     update();
   }
+
+
+
+void search(value){
+  searchValue = value;
+  update();
+}
+
+
 
   Future<List<storeListModel>> fetchData() async {
     var connectivityResult = await (Connectivity().checkConnectivity());

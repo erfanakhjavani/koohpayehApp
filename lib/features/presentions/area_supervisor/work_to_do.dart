@@ -99,15 +99,15 @@ class WorkToDo extends GetView<workToDoController> {
                                         ),
                                       ),
                                     ), ElevatedButton(
-                                      style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => Colors.green)),
+                                      style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
                                       onPressed: () {
-                                       Get.to(ProductPage(),transition: Transition.leftToRight);
+
                                       },
                                       child: Container(
 
                                         height: 25,
                                         child: Text(
-                                          "سفارش محصول",
+                                          "درخواست تمدید",
                                           style: titleW3,
                                           textAlign: TextAlign.center,
                                         ),

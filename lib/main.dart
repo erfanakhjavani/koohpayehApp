@@ -32,7 +32,7 @@ void main() {
           GetPage(name: '/login', page: ()=> Login()),
           GetPage(name: '/seles_expert', page: ()=> SelesExpert()),
           GetPage(name: '/create_seller', page: ()=> createSeller()),
-     //     GetPage(name: "/create_shop",page: ()=> CreateShop()),
+         // GetPage(name: "/create_shop",page: ()=> CreateShop(areaDetailId: '',)),
           GetPage(name: "/store-list",page: ()=> Store_list()),
           GetPage(name: "/splash",page: ()=> Splash()),
         ],

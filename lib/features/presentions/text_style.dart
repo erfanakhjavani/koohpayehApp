@@ -34,7 +34,7 @@ TextStyle title4 = TextStyle(
 TextStyle appbar = TextStyle(
     fontFamily: 'Irs',
     fontSize: 18,
-    color: Colors.white70,
+    color: Colors.white,
     fontWeight: FontWeight.w200);
 
 
