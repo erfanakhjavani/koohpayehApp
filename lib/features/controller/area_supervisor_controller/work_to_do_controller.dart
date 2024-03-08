@@ -18,13 +18,7 @@ class workToDoController extends GetxController{
     update();
   }
 
-  // Future<List<workToDoModel>> fetchData() async {
-  //   var connectivityResult = await (Connectivity().checkConnectivity());
-  //   if (connectivityResult == ConnectivityResult.none) {
-  //     throw Exception('No Internet');
-  //   }
-  //   return getDataWorkToDo();
-  // }
+
   void deleteUser(workToDoModel user) {
     users.remove(user);
     update();

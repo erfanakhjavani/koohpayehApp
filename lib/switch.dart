@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:koohpayeh/login.dart';
 import 'package:koohpayeh/premission/area_supervisor.dart';
@@ -9,6 +10,8 @@ import 'package:koohpayeh/premission/sales_expert.dart';
 import 'package:koohpayeh/premission/sales_manager.dart';
 import 'package:koohpayeh/premission/sales_motalebat.dart';
 import 'package:koohpayeh/premission/super_admin.dart';
+
+
 
 
 
@@ -32,7 +35,7 @@ Widget navigateUserBasedOnRole(String roleId, BuildContext context) {
       return AreaSupervisor();
 
     /// کارشناس فروش
-    case 'salesExpert':
+    case 'salesٍExpert':
       return SelesExpert();
 
     /// مدیر مالی

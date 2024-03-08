@@ -1,15 +1,25 @@
 import 'package:get/get.dart';
 
+
 import 'example_class.dart';
 
 class ProductController extends GetxController {
   var products = <Product>[].obs;
 
+
+
+
+
+
   @override
   void onInit() {
     super.onInit();
     addProduct(
-      Product('عسل چند گیاه 700 گرم',''),
+      Product('عسل چند گیاه یک کیلو گرم',"assets/images/sample/1.jpg"),
+    );addProduct(
+      Product('عسل چند گیاه 700 گرم','assets/images/sample/750.jpg'),
+    );addProduct(
+      Product('عسل چند گیاه 250 گرم','assets/images/sample/250.jpg'),
     );
     update();
   }

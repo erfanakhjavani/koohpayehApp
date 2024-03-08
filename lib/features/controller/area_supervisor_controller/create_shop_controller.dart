@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../presentions/area_supervisor/seller_add.dart';
+import '../../presentions/area_supervisor/create_shop/seller_add.dart';
 
 
 
@@ -10,7 +10,8 @@ class createShopController extends GetxController{
   RxList<CardWidget> cards = <CardWidget>[CardWidget()].obs;
 
   late CardWidget card;
-  List<bool> isSelected = [false, false, false, false];
+  List<bool> isSelected = [false, false, false, false, false, false];
+
 
 
 
@@ -19,6 +20,7 @@ class createShopController extends GetxController{
     isSelected;
     update();
   }
+
 
 
 

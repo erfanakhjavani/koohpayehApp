@@ -6,8 +6,8 @@ import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../features/presentions/area_supervisor/create_shop.dart';
-import '../features/presentions/area_supervisor/seller_add.dart';
+import '../features/presentions/area_supervisor/create_shop/create_shop.dart';
+import '../features/presentions/area_supervisor/create_shop/seller_add.dart';
 
 
 
@@ -27,6 +27,8 @@ void sendCreateShopRequest({
   required bool isnabshtai,
   required bool isbonbasti,
   required bool ismaleki,
+  required bool khiabanFareii,
+  required bool isMostajeri,
   required String area_id
 
 }) async {
@@ -41,11 +43,18 @@ void sendCreateShopRequest({
   String ishashiehKhiaban = '1';
   String isnabshta = '1';
   String isbonbast = '1';
+  String khiabanFarei = '1';
+  String isMostajer = '1';
 
   if (isnabshtai == true) {
     isnabshta = '1';
   } else {
     isnabshta = '0';
+  }
+  if (khiabanFarei == true) {
+    khiabanFarei = '1';
+  } else {
+    khiabanFarei = '0';
   }
   if (ishashiehKhiabani == true) {
     ishashiehKhiaban = '1';
@@ -88,6 +97,8 @@ void sendCreateShopRequest({
   request.fields['isNabsh'] = isnabshta;
   request.fields['isBonbast'] = isbonbast;
   request.fields['isMalek'] = ismalek;
+  request.fields['khiabanFarei'] = khiabanFarei;
+  request.fields['isMostajer'] = isMostajer;
   request.fields['name[]'] = name;
   request.fields['number[]'] = number;
   request.fields['family[]'] = family;

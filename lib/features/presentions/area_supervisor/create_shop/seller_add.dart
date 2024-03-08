@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../controller/area_supervisor_controller/create_shop_controller.dart';
+import '../../../controller/area_supervisor_controller/create_shop_controller.dart';
 import 'create_shop.dart';
 
 

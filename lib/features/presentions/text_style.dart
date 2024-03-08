@@ -1,9 +1,15 @@
 
 import 'package:flutter/material.dart';
 
+TextStyle bigtitle = TextStyle(
+    fontFamily: 'Irs',
+    fontSize: 25,
+    color: Colors.black87,
+    fontWeight: FontWeight.w200);
+
 TextStyle appbarWithb = TextStyle(
     fontFamily: 'Irs',
-    fontSize: 18,
+    fontSize: 20,
     color: Colors.black87,
     fontWeight: FontWeight.w200);
 
@@ -33,7 +39,7 @@ TextStyle title4 = TextStyle(
 
 TextStyle appbar = TextStyle(
     fontFamily: 'Irs',
-    fontSize: 18,
+    fontSize: 20,
     color: Colors.white,
     fontWeight: FontWeight.w200);
 
@@ -86,4 +92,5 @@ TextStyle titleg4 = TextStyle(
     fontWeight: FontWeight.w200);
 
 
-
+const Color base_color = Color(0xff307959);
+const Color base_colorli = Color(0xff594f99);

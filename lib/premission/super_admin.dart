@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/helpers/example/example2.dart';
 import 'package:koohpayeh/login.dart';
 import 'package:koohpayeh/premission/sales_expert.dart';
 import 'package:shared_preferences/shared_preferences.dart';

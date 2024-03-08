@@ -7,3 +7,6 @@ class Product {
 
   Product(this.name, this.imageUrl);
 }
+
+
+

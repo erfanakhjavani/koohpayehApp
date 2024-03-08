@@ -1,24 +1,36 @@
 
-import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
+import 'package:koohpayeh/model/area_supervisor_model/get_area_part_model.dart';
 import '../../../api/list_store_api.dart';
-import '../../../model/area_supervisor_model/storeListModel.dart';
+import '../../../model/area_supervisor_model/store_list_model.dart';
 
 
 class listShopController extends GetxController{
-  var users = <storeListModel>[].obs;
-  late Future<List<storeListModel>> futureStores;
+  late Future<List<getAreaModel>> futureArea;
+  late Future<List<getPartModel>> futurePart;
+  late Future<ApiResponseModel>  futureStores;
   String searchValue = '';
-
 
   @override
   void onInit() {
+    getArea();
+    // TODO: implement onInit
     super.onInit();
-    futureStores = getData();
+  }
+
+  void getArea() {
+    futureArea = getAreaApi();
     update();
   }
 
-
+  void getPart(int id){
+    futurePart = getPartApi(id);
+    update();
+  }
+  void getStores(int id){
+    futureStores = getlistStore(id);
+    update();
+  }
 
 void search(value){
   searchValue = value;
@@ -27,15 +39,4 @@ void search(value){
 
 
 
-  Future<List<storeListModel>> fetchData() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
-      throw Exception('No Internet');
-    }
-    return getData();
-  }
-  void deleteUser(storeListModel user) {
-    users.remove(user);
-    update();
-  }
 }

@@ -39,11 +39,7 @@ class _LoginState extends State<Login> {
       fontSize: 16,
       color: Color.fromRGBO(73, 73, 73, 1.0),
       fontWeight: FontWeight.w200);
-  static TextStyle style_button = TextStyle(
-      fontFamily: 'Irs',
-      fontSize: 18,
-      color: Colors.white,
-      fontWeight: FontWeight.w200);
+
 
   @override
   Widget build(BuildContext context) {
@@ -251,7 +247,9 @@ class _LoginState extends State<Login> {
 
           await prefs.setString('token', model.data.token);
           await prefs.setString('role', model.role);
+          await prefs.setString('image', model.data.image);
           await prefs.setString('nameuser', model.data.name);
+          await prefs.setString('familyuser', model.data.family);
           await prefs.setString('familyUser', model.data.family);
           await prefs.setString('phoneUser', model.data.phone);
         } else {
@@ -259,7 +257,6 @@ class _LoginState extends State<Login> {
           ShowMySnackBar(context, model.message);
         }
       } else {
-
         ShowMySnackBar(context, "لطفا اینترنت را بررسی کنید.");
       }
     } catch (e) {

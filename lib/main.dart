@@ -5,9 +5,8 @@ import 'package:koohpayeh/premission/sales_expert.dart';
 import 'package:koohpayeh/premission/super_admin.dart';
 import 'package:koohpayeh/splash_screen.dart';
 import 'features/bindings/my_bidings.dart';
-import 'features/presentions/area_supervisor/create_shop.dart';
-import 'features/presentions/area_supervisor/seller_add.dart';
-import 'features/presentions/area_supervisor/store_list.dart';
+import 'features/presentions/area_supervisor/create_shop/seller_add.dart';
+import 'features/presentions/area_supervisor/list_store/store_list.dart';
 import 'login.dart';
 
 
@@ -32,8 +31,6 @@ void main() {
           GetPage(name: '/login', page: ()=> Login()),
           GetPage(name: '/seles_expert', page: ()=> SelesExpert()),
           GetPage(name: '/create_seller', page: ()=> createSeller()),
-         // GetPage(name: "/create_shop",page: ()=> CreateShop(areaDetailId: '',)),
-          GetPage(name: "/store-list",page: ()=> Store_list()),
           GetPage(name: "/splash",page: ()=> Splash()),
         ],
         home: Splash(),

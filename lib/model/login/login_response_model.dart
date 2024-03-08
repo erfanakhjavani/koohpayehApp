@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 class LoginResponseModel {
   final bool success;
@@ -49,4 +49,6 @@ class User {
       token: json['token'],
     );
   }
+
+
 }
