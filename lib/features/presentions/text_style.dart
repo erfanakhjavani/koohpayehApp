@@ -92,5 +92,26 @@ TextStyle titleg4 = TextStyle(
     fontWeight: FontWeight.w200);
 
 
+
+
+TextStyle titlegr1 = TextStyle(
+    fontFamily: 'Irs',
+    fontSize: 16,
+    color: base_color,
+    fontWeight: FontWeight.w200);
+
+TextStyle titlegr2 = TextStyle(
+    fontFamily: 'Irs',
+    fontSize: 14,
+    color: base_color,
+    fontWeight: FontWeight.w200);
+
+
+
+
+
+
+
+
 const Color base_color = Color(0xff307959);
 const Color base_colorli = Color(0xff594f99);

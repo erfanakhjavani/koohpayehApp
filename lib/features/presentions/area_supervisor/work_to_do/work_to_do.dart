@@ -38,7 +38,23 @@ class WorkToDo extends GetView<workToDoController> {
                       color: Colors.green, size: 30),
               );
             } else if (snapshot.hasError) {
-              return Center(child: Text('لطفا اینترنت خود را متصل کنید',style: title2,));
+              return Center(child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('لطفا اینترنت خود را متصل کنید',style: title3,),
+                  TextButton(onPressed: (){
+                    controller.onInit();
+                    Get.forceAppUpdate();
+                    controller.update();
+                  }, child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.refresh,color: base_color,),
+                      Text("تلاش مجدد",style: titlegr1,)
+                    ],))
+
+                ],
+              ));
             } else {
               return Directionality(
                 textDirection: TextDirection.rtl,

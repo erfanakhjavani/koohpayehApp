@@ -18,6 +18,7 @@ class listShopController extends GetxController{
     super.onInit();
   }
 
+
   void getArea() {
     futureArea = getAreaApi();
     update();

@@ -26,7 +26,23 @@ class GetArea extends GetView<listShopController> {
                       child: LoadingAnimationWidget.twoRotatingArc(
                           color: Colors.green, size: 30));
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('لطفا اینترنت خود را متصل کنید'));
+                  return Center(child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('لطفا اینترنت خود را متصل کنید',style: title3,),
+                      TextButton(onPressed: (){
+                        controller.onInit();
+                        Get.forceAppUpdate();
+                        controller.update();
+                      }, child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                        Icon(Icons.refresh,color: base_color,),
+                        Text("تلاش مجدد",style: titlegr1,)
+                      ],))
+                      
+                    ],
+                  ));
                 } else {
                   return Column(
                     children: [
@@ -37,18 +53,21 @@ class GetArea extends GetView<listShopController> {
                           children: [
                             Container(
 
-                              width: Get.width/2.5,
+
                                 height: 40,
                                 decoration: BoxDecoration(
                                   color: Colors.grey[400],
                                   borderRadius: BorderRadius.circular(50)
                                 ),
-                                child: Center(child: Row(
-                                  children: [
-                                    Icon(Icons.location_on),
-                                    Text("خراسان رضوی،مشهد",style: titleg3,),
-                                  ],
-                                ))),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(child: Row(
+                                    children: [
+                                      Icon(Icons.location_on),
+                                      Text("خراسان رضوی،مشهد",style: titleg3,),
+                                    ],
+                                  )),
+                                )),
                           ],
                         ),
                       ),
