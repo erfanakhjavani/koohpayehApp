@@ -28,21 +28,20 @@ class Store_list extends GetView<listShopController> {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
-      
+            scrolledUnderElevation: 0,
               flexibleSpace : Padding(
                 padding: const EdgeInsets.only(left: 10,right: 47),
                 child: TextField(
                   cursorColor: base_color,
-      
                   onChanged: (value) {
                     controller.search(value);
                   },
       
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
-      
+
                         borderSide: BorderSide(style: BorderStyle.solid,color: base_color),
-                    borderRadius: BorderRadius.all(Radius.circular(10))
+                    borderRadius: BorderRadius.all(Radius.circular(50))
                     ),
                     hintText: "جستجو فروشگاه",
                       hintStyle: titleg3,
@@ -105,8 +104,8 @@ class Store_list extends GetView<listShopController> {
                                   children: [
                                     Icon(Icons.location_on),
                                     Text("خراسان رضوی،مشهد" + " | " +
-                                        "منطقه" + mantagheh.toString().toPersianDigit() +
-                                        " | " +  bakhsh.toString().removeAllWhitespace.toPersianDigit(),style: titleg3,),
+                                        "منطقه " + mantagheh.toString().toPersianDigit() +
+                                        " | " +  bakhsh.toString().toPersianDigit(),style: titleg3,),
                                   ],
                                 )),
                               )),

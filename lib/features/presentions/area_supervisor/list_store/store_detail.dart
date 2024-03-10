@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/list_shop_controller.dart';
-import 'package:koohpayeh/features/helpers/example/example.dart';
+import 'package:koohpayeh/features/presentions/area_supervisor/list_store/product_order.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/edit_shop.dart';
 import 'package:koohpayeh/features/presentions/text_style.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -30,152 +30,162 @@ class store_detail extends GetView<listShopController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          actions: [IconButton(onPressed: () {
-            // Get.to(editShop(
-            //   address: address,
-            //   storeName: storeName,
-            //   phone: phone,
-            //   bonBast: bonBast,
-            //   conditionMalek: conditionMalek,
-            //   khiabanasli: khiabanasli,
-            //   nabsh: nabsh,
-            //   phoneV: phoneV,
-            //   sabegheh:sabegheh,
-            //   malekName: malekName,
-            //   metraj: metraj,
-            //   image: image,
-            // ),transition: Transition.rightToLeft);
-          }, icon: Icon(Icons.edit_note))],
-          title: Text(
-            "جزییات فروشگاه",
-            style: appbarWithb,
-          ),
-          centerTitle: true,
-        ),
-        body: FutureBuilder(
-            future: controller.futurePart,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                    child: LoadingAnimationWidget.inkDrop(
-                        color: Colors.green, size: 30));
-              } else if (snapshot.hasError) {
-                return Center(child: Text('لطفا اینترنت خود را متصل کنید'));
-              } else {
-                return GetBuilder<listShopController>(builder: (controller) {
-                  return Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              onTap: (){
-                                Get.to(ImageViewer(image!,storeName!));
-                              },
-                              child: Container(
-                                height: Get.height / 3,
-                                width: Get.width,
-                                decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                child: Image.network("https://crm.koohpayeh.co/storage/images/${image}",fit: BoxFit.cover,),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    storeName.toString(),
-                                    style: title1,
-                                  ),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+          appBar: AppBar(
 
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.green,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                    onPressed: () {
-                                      Get.to(ProductPage(),
-                                          transition: Transition.topLevel);
-                                    },
-                                    child: Container(
-                                      height: 25,
-                                      child: Text(
-                                        "سفارش محصول",
-                                        style: titleW3,
-                                        textAlign: TextAlign.center,
-                                      ),
+            actions: [MenuBar(
+
+              children: [
+                PopupMenuButton<String>(
+                  shadowColor: Colors.transparent,
+                  surfaceTintColor: Colors.transparent,
+                  shape: UnderlineInputBorder(),
+
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                     PopupMenuItem<String>(
+                      value: 'ویرایش فروشگاه',
+                      child: Text('ویرایش فروشگاه',style: title3),
+                    ),
+                     PopupMenuItem<String>(
+                      value: 'سفارشات',
+                      child: Text('سفارشات',style: title3),
+                    ),
+                     PopupMenuItem<String>(
+                      value: 'حذف فروشگاه',
+                      child: Text('حذف فروشگاه',style: title3,),
+                    ),
+                  ],
+                )
+            ])],
+            title: Text(
+              "جزییات فروشگاه",
+              style: appbarWithb,
+            ),
+            centerTitle: true,
+          ),
+          body: FutureBuilder(
+              future: controller.futurePart,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                      child: LoadingAnimationWidget.inkDrop(
+                          color: Colors.green, size: 30));
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('لطفا اینترنت خود را متصل کنید'));
+                } else {
+                  return GetBuilder<listShopController>(builder: (controller) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          InkWell(
+                            onTap: (){
+                              Get.to(ImageViewer(image!,storeName!));
+                            },
+                            child: Container(
+                              height: Get.height / 3,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Image.network("https://crm.koohpayeh.co/storage/images/${image}",fit: BoxFit.cover,),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  storeName.toString(),
+                                  style: title1,
+                                ),
+
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.green,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10))),
+                                  onPressed: () {
+                                    Get.to(ProductPage(),
+                                        transition: Transition.topLevel);
+                                  },
+                                  child: Container(
+                                    height: 25,
+                                    child: Text(
+                                      "سفارش محصول",
+                                      style: titleW3,
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            detail(address, ''),
+                          ),
+                          detail(address, ''),
 
-                            SizedBox(
-                              height: 20,
-                            ),
-                            TextButton(
-                                onPressed: () {},
-                                child: detail("نام مالک", malekName)),
-                            Divider(),
-                            TextButton(
-                                onPressed: () {
-                                  Clipboard.setData(
-                                      new ClipboardData(text: phone.toString()));
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                    content: Center(child: Text('کپی شد')),
-                                  ));
-                                },
-                                child: detail("شماره تلفن", phone)),
-                            Divider(),
-                            TextButton(
-                                onPressed: () {
-                                  Clipboard.setData(
-                                      new ClipboardData(text: phoneV.toString()));
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                    content: Center(child: Text('کپی شد')),
-                                  ));
-                                },
-                                child: detail("شماره تلفن مجازی", phoneV)),
-                            Divider(),
-                            detail(
-                                "خیابان", khiabanasli == '1' ? "اصلی" : "فرعی"),
-                            Divider(),
-                            detail("نبش", nabsh == '1' ? yes : no),
-                            Divider(),
-                            detail("بن بست", bonBast == '1' ? yes : no),
-                            Divider(),
-                            detail("وضعیت مالک",
-                                conditionMalek == '1' ? "مالک" : "مستاجر"),
-                            Divider(),
-                            detail("متراژ", metraj),
-                            Divider(),
-                            detail("سابقه", sabegheh),
-                            Divider(),
-                            detail("نام فروشنده", ""),
-                            Divider(),
-                            detail("شماره تلفن فروشنده", ""),
-                            SizedBox(
-                              height: 20,
-                            ),
-                          ],
-                        ),
-                      ));
-                });
-              }
-            }));
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextButton(
+                              onPressed: () {},
+                              child: detail("نام مالک", malekName)),
+                          Divider(),
+                          TextButton(
+                              onPressed: () {
+                                Clipboard.setData(
+                                    new ClipboardData(text: phone.toString()));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Center(child: Text('کپی شد')),
+                                ));
+                              },
+                              child: detail("شماره تلفن", phone)),
+                          Divider(),
+                          TextButton(
+                              onPressed: () {
+                                Clipboard.setData(
+                                    new ClipboardData(text: phoneV.toString()));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Center(child: Text('کپی شد')),
+                                ));
+                              },
+                              child: detail("شماره تلفن مجازی", phoneV)),
+                          Divider(),
+                          detail(
+                              "خیابان", khiabanasli == '1' ? "اصلی" : "فرعی"),
+                          Divider(),
+                          detail("نبش", nabsh == '1' ? yes : no),
+                          Divider(),
+                          detail("بن بست", bonBast == '1' ? yes : no),
+                          Divider(),
+                          detail("وضعیت مالک",
+                              conditionMalek == '1' ? "مالک" : "مستاجر"),
+                          Divider(),
+                          detail("متراژ", metraj),
+                          Divider(),
+                          detail("سابقه", sabegheh),
+                          Divider(),
+                          detail("نام فروشنده", ""),
+                          Divider(),
+                          detail("شماره تلفن فروشنده", ""),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    );
+                  });
+                }
+              })),
+    );
   }
 
   Widget detail(String? key, String? value) {

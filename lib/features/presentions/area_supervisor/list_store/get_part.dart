@@ -73,7 +73,7 @@ class GetPart extends GetView<listShopController> {
                                     children: [
                                       Icon(Icons.location_on),
                                       Text("خراسان رضوی،مشهد" + " | ",style: titleg3,),
-                                      Text("منطقه" + mantagheh!.toPersianDigit(),style: titleg3,),
+                                      Text("منطقه " + mantagheh!.toPersianDigit(),style: titleg3,),
                                     ],
                                   )),
                                 )),

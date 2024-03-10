@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/area_supervisor_controller.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/edit_shop_controller.dart';
+import 'package:koohpayeh/features/controller/area_supervisor_controller/order_controller.dart';
 
 import 'package:koohpayeh/features/controller/cemera_controller.dart';
 import '../../model/shared_pref.dart';
@@ -17,6 +18,7 @@ class MyBindings implements Bindings{
     Get.lazyPut(() => workToDoController(),fenix: true);
     Get.lazyPut(() => editShopController(),fenix: true);
     Get.lazyPut(() => areaSVController(),fenix: true);
+    Get.lazyPut(() => ProductOrderController(),fenix: true);
 
   }
 }
