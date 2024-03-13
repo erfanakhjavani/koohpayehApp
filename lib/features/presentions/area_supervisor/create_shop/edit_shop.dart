@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/edit_shop_controller.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/seller_add.dart';
+import 'package:koohpayeh/features/presentions/text_style.dart';
 import '../../../controller/area_supervisor_controller/create_shop_controller.dart';
 import '../../../controller/cemera_controller.dart';
 
@@ -406,7 +407,7 @@ class editShop extends GetView<editShopController> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor:
-                                          const Color.fromRGBO(62, 88, 20, 1.0),
+                                           base_color,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
                                                 15.0),
