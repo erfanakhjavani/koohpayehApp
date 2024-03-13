@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/seller_add.dart';
+import 'package:koohpayeh/features/presentions/text_style.dart';
 
 
 import '../../../../api/create_store_api.dart';
@@ -399,7 +400,7 @@ class CreateShop extends StatelessWidget {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor:
-                                          const Color.fromRGBO(62, 88, 20, 1.0),
+                                          base_color,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
                                                 15.0),

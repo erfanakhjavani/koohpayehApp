@@ -6,7 +6,6 @@ import 'package:koohpayeh/premission/super_admin.dart';
 import 'package:koohpayeh/splash_screen.dart';
 import 'features/bindings/my_bidings.dart';
 import 'features/presentions/area_supervisor/create_shop/seller_add.dart';
-import 'features/presentions/area_supervisor/list_store/store_list.dart';
 import 'login.dart';
 
 
