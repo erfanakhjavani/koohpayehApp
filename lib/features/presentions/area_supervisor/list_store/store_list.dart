@@ -1,15 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_area.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_part.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/list_store/store_detail.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-
 import '../../../controller/area_supervisor_controller/list_shop_controller.dart';
 import '../../text_style.dart';
+import '../../try_again.dart';
 
 
 
@@ -57,27 +52,9 @@ class Store_list extends GetView<listShopController> {
               builder: (context, snapshot) {
       
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                      child: LoadingAnimationWidget.twoRotatingArc(
-                          color: Colors.green, size: 30));
+                  return Loading();
                 } else if (snapshot.hasError) {
-                  return Center(child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('لطفا اینترنت خود را متصل کنید',style: title3,),
-                      TextButton(onPressed: (){
-                        controller.onInit();
-                        Get.forceAppUpdate();
-                        controller.update();
-                      }, child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.refresh,color: base_color,),
-                          Text("تلاش مجدد",style: titlegr1,)
-                        ],))
-
-                    ],
-                  ));
+                  return TryAgain(controller);
                 } else {
                   return GetBuilder<listShopController>(builder: (controller) {
                      var filteredStores = snapshot.data!.stores.where((store) => store.name!.contains(controller.searchValue)).toList();
@@ -95,7 +72,7 @@ class Store_list extends GetView<listShopController> {
       
                               height: 40,
                               decoration: BoxDecoration(
-                                  color: Colors.grey[400],
+
                                   borderRadius: BorderRadius.circular(50)
                               ),
                               child: Padding(
@@ -105,7 +82,8 @@ class Store_list extends GetView<listShopController> {
                                     Icon(Icons.location_on),
                                     Text("خراسان رضوی،مشهد" + " | " +
                                         "منطقه " + mantagheh.toString().toPersianDigit() +
-                                        " | " +  bakhsh.toString().toPersianDigit(),style: titleg3,),
+                                        " | ",style: titleg3,),
+                                        Text(bakhsh.toString().toPersianDigit(),style: titlegr1,),
                                   ],
                                 )),
                               )),
@@ -161,11 +139,7 @@ class Store_list extends GetView<listShopController> {
                                               topLeft: Radius.circular(10),
                                               topRight: Radius.circular(10)
                                             )),
-                                               child: snapshot.connectionState == ConnectionState.waiting
-                                                   ? Center(
-                                                     child: LoadingAnimationWidget.inkDrop(
-                                                         color: Colors.green, size: 30),
-                                                   ) : null,
+
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(20.0),

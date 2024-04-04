@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/edit_shop_controller.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/seller_add.dart';
+import 'package:koohpayeh/features/presentions/text_style.dart';
 import '../../../controller/area_supervisor_controller/create_shop_controller.dart';
 import '../../../controller/cemera_controller.dart';
 
 
 final _messengerKey = GlobalKey<ScaffoldMessengerState>();
 
-class editShop extends GetView<editShopController> {
+class EditShop extends GetView<editShopController> {
 
   final String storeName;
   final String malekName;
@@ -27,7 +28,7 @@ class editShop extends GetView<editShopController> {
 
 
 
-  editShop({
+  EditShop({
     required this.storeName,
     required this.image,
     required this.address,
@@ -326,73 +327,6 @@ class editShop extends GetView<editShopController> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 20),
-                        GetBuilder<createShopController>(builder: (controller) {
-                          return ExpansionTile(
-                              backgroundColor: Colors.white,
-                              shape: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(8))),
-                              title: Text(
-                                'اطلاعات فروشگاه',
-                                style: style_filed,
-                              ),
-                              children: [
-                                CheckboxListTile(
-                                  title: Text('حاشیه خیابان اصلی'),
-                                  checkboxShape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(3))),
-                                  value: controller.isSelected[0],
-                                  onChanged: (bool? value) {
-                                    controller.isSelected[0] = value!;
-                                    controller.select();
-                                  },
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    'نبش تقاطع',
-                                    style: style_filed,
-                                  ),
-                                  checkboxShape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(3))),
-                                  value: controller.isSelected[1],
-                                  onChanged: (bool? value) {
-                                    controller.isSelected[1] = value!;
-                                    controller.select();
-                                  },
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    'کوچه بن بست',
-                                    style: style_filed,
-                                  ),
-                                  checkboxShape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(3))),
-                                  value: controller.isSelected[2],
-                                  onChanged: (bool? value) {
-                                    controller.isSelected[2] = value!;
-                                    controller.select();
-                                  },
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    'مالک',
-                                    style: style_filed,
-                                  ),
-                                  checkboxShape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(3))),
-                                  value: controller.isSelected[3],
-                                  onChanged: (bool? value) {
-                                    controller.isSelected[3] = value!;
-                                    controller.select();
-                                  },
-                                ),
-                              ]);
-                        }),
                         SizedBox(
                           height: 10,
                         ),
@@ -406,18 +340,13 @@ class editShop extends GetView<editShopController> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor:
-                                          const Color.fromRGBO(62, 88, 20, 1.0),
+                                              base_color,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
                                                 15.0),
                                           ),
                                         ),
                                         onPressed: () {
-                                          // if (ccontroller.load == false) {
-                                          //   ShowMySnackBar(
-                                          //       context,
-                                          //       "لطفا عکس فروشگاه را وارد نمایید");
-                                          // } else
                                           if (nameStoreController.text == "") {
                                             // error
                                             ShowMySnackBar(

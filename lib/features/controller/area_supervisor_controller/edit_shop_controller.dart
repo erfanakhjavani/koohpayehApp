@@ -13,7 +13,7 @@ class editShopController extends GetxController{
   RxList<CardWidget> cards = <CardWidget>[CardWidget()].obs;
 
   late CardWidget card;
-  List<bool> isSelected = [false, false, false, false];
+
 
    readEdit(){
      new TextEditingController();
@@ -21,12 +21,6 @@ class editShopController extends GetxController{
 
 
 
-
-
-  void select(){
-    isSelected;
-    update();
-  }
 
 
 
