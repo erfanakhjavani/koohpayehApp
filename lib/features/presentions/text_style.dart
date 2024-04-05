@@ -96,13 +96,13 @@ TextStyle titleg4 = TextStyle(
 
 TextStyle titlegr1 = TextStyle(
     fontFamily: 'Irs',
-    fontSize: 16,
+    fontSize: 18,
     color: base_color,
     fontWeight: FontWeight.w200);
 
 TextStyle titlegr2 = TextStyle(
     fontFamily: 'Irs',
-    fontSize: 14,
+    fontSize: 16,
     color: base_color,
     fontWeight: FontWeight.w200);
 

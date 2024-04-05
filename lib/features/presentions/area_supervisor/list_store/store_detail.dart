@@ -11,12 +11,15 @@ import 'package:photo_view/photo_view.dart';
 import '../../image_viewer.dart';
 
 class store_detail extends GetView<listShopController> {
+
+
+
   final String? storeName;
   final String? malekName;
   final String? address;
   final String? phone;
   final String? phoneV;
-  final String?khiabanasli;
+  final String? khiabanasli;
   final String? nabsh;
   final String? bonBast;
   final String? conditionMalek;
@@ -28,6 +31,25 @@ class store_detail extends GetView<listShopController> {
   final String? yes = 'بله';
   final String? no = 'خیر';
 
+
+
+  store_detail({
+    required this.image,
+    required this.storeName,
+    required this.address,
+    required this.phone,
+    required this.phoneV,
+    required this.khiabanasli,
+    required this.nabsh,
+    required this.bonBast,
+    required this.conditionMalek,
+    required this.sabegheh,
+    required this.sellerName,
+    required this.sellerphone,
+    required this.malekName,
+    required this.metraj
+  });
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -35,10 +57,14 @@ class store_detail extends GetView<listShopController> {
       child: Scaffold(
           appBar: AppBar(
 
-            actions: [MenuBar(
+            actions: [
 
-              children: [
-                PopupMenuButton<String>(
+              Container(
+                foregroundDecoration: BoxDecoration(
+                  color: Colors.transparent,
+                  backgroundBlendMode: BlendMode.values[4]
+                                 ),
+                child: PopupMenuButton<String>(
                   shadowColor: Colors.transparent,
                   surfaceTintColor: Colors.transparent,
                   shape: UnderlineInputBorder(),
@@ -47,18 +73,33 @@ class store_detail extends GetView<listShopController> {
                      PopupMenuItem<String>(
                       value: 'ویرایش فروشگاه',
                       child: Text('ویرایش فروشگاه',style: title3),
+                       onTap: (){
+                        Get.to(EditShop(
+                            storeName: storeName!,
+                            image: image!,
+                            address: address!,
+                            phone: phone!,
+                            phoneV: phoneV!,
+                            khiabanasli: khiabanasli!,
+                            nabsh: nabsh!,
+                            bonBast: bonBast!,
+                            conditionMalek: conditionMalek!,
+                            sabegheh: sabegheh!,
+                            malekName: malekName!,
+                            metraj: metraj!
+                        ));
+                       },
                     ),
                      PopupMenuItem<String>(
                       value: 'سفارشات',
                       child: Text('سفارشات',style: title3),
                     ),
-                     PopupMenuItem<String>(
-                      value: 'حذف فروشگاه',
-                      child: Text('حذف فروشگاه',style: title3,),
-                    ),
                   ],
-                )
-            ])],
+                ),
+              ),
+
+
+            ],
             title: Text(
               "جزییات فروشگاه",
               style: appbarWithb,
@@ -211,20 +252,5 @@ class store_detail extends GetView<listShopController> {
     );
   }
 
-  store_detail({
-    required this.image,
-    required this.storeName,
-    required this.address,
-    required this.phone,
-    required this.phoneV,
-    required this.khiabanasli,
-    required this.nabsh,
-    required this.bonBast,
-    required this.conditionMalek,
-    required this.sabegheh,
-    required this.sellerName,
-    required this.sellerphone,
-    required this.malekName,
-    required this.metraj
-  });
+
 }

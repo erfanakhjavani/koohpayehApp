@@ -10,19 +10,10 @@ import 'features/presentions/area_supervisor/create_shop/seller_add.dart';
 
 
 void main() {
-  runApp(Splash() );
+  runApp(Splash());
 }
 
-
 class Splash extends StatelessWidget {
-
-  static const titleStyle =  TextStyle(
-      color: Color.fromRGBO(62, 88, 20, 1.0),
-      fontWeight: FontWeight.w800,
-      fontFamily: 'Brl',
-      fontSize: 30,
-      letterSpacing: 0.5);
-
 
 
   @override
@@ -42,16 +33,16 @@ class Splash extends StatelessWidget {
           if(snapshot.hasData){
             SharedPreferences sharedPreferences = snapshot.data!;
             var loggedInState = sharedPreferences.getBool("LoggedIn") ?? false;
-            var logeedrole =  sharedPreferences.getString('role') ?? '';
+            var loginRole =  sharedPreferences.getString('role') ?? '';
             Get.find<shareData>().onInit();
             clearDataSeller();
 
-
+            // برای بررسی اینکه آیا قبلا لاگین شده یا خیر
             if(loggedInState){
-              return //Login();
-              navigateUserBasedOnRole(logeedrole, context);
+              return
+              navigateUserBasedOnRole(loginRole, context);
             }else{
-              return //superAdmin();
+              return
               Login();
             }
           }else{
