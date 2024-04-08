@@ -25,7 +25,8 @@ class Product {
       image: json['image'],
       options: List<String>.from(json['options'].map((x) => x)),
       createdAt: json['created_at'],
-      updatedAt: json['updated_at'], orders: 0.obs,
+      updatedAt: json['updated_at'],
+      orders: 0.obs,
     );
   }
 

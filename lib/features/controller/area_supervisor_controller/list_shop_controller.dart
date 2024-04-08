@@ -1,6 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:koohpayeh/model/area_supervisor_model/get_area_part_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../api/list_store_api.dart';
 import '../../../model/area_supervisor_model/store_list_model.dart';
 
@@ -11,9 +12,11 @@ class listShopController extends GetxController{
   late Future<ApiResponseModel>  futureStores;
   String searchValue = '';
 
+
   @override
-  void onInit() {
+  void onInit() async{
     getArea();
+
     // TODO: implement onInit
     super.onInit();
   }
