@@ -124,9 +124,11 @@ void showMyDialog({ required BuildContext context,
     context: context,
     builder: (BuildContext context) {
       return Dialog(
+        
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20), // این خط برای گرد کردن گوشه‌های دیالوگ است
         ),
+
         elevation: 5, // این خط برای ایجاد سایه برای دیالوگ است
         backgroundColor: Colors.white, // این خط رنگ پس‌زمینه دیالوگ را تعیین می‌کند
         child: Padding(
@@ -148,7 +150,7 @@ void showMyDialog({ required BuildContext context,
                   if(goToPage == null){
                     Get.back();
                   }
-                  Get.off(goToPage);
+                  Get.to(goToPage);
                 },
               ),
             ],

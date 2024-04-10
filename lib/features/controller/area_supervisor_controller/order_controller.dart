@@ -11,7 +11,7 @@ import '../../../api/get_product.dart';
 class ProductOrderController extends GetxController {
   late Future<List<Product>> futureProduct;
   var products = <Product>[].obs;
-  late  RxBool isFirst = false.obs;
+  late bool isFirst;
 
   @override
   void onInit() {
@@ -41,7 +41,7 @@ class ProductOrderController extends GetxController {
   }
 
   void CheckBool(value){
-    isFirst.value;
+    isFirst = value;
     update();
   }
 }

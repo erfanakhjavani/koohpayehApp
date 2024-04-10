@@ -79,9 +79,6 @@ Future<List<getPartModel>> getPartApi(int id) async {
 
 Future<ApiResponseModel> getlistStore(int id) async {
 
-
-
-
   var uri = Uri.parse('https://crm.koohpayeh.co/api/store/list?id=$id');
 
   SharedPreferences pref = await SharedPreferences.getInstance();

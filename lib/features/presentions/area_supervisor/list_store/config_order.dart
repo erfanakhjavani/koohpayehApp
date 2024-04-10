@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_area.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/list_store/product_order.dart';
 import 'package:koohpayeh/features/presentions/try_again.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -9,20 +10,20 @@ import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../controller/area_supervisor_controller/order_controller.dart';
 import '../../style.dart';
-import 'get_area.dart';
 
 class CheckoutPage extends GetView<ProductOrderController> {
   final int? id;
 
   CheckoutPage({this.id});
 
- final bool isFirst = false;
+
 
   @override
   Widget build(BuildContext context) {
     var nonZeroProducts = controller.products
         .where((product) => product.orders.value > 0)
         .toList();
+    controller.CheckBool(true);
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -124,6 +125,7 @@ class CheckoutPage extends GetView<ProductOrderController> {
                   width: Get.width,
                   child: FloatingActionButton(
                     onPressed: () async {
+                      controller.CheckBool(false);
                       try {
                         var nonZeroProducts = controller.products
                             .where((product) => product.orders.value > 0)
@@ -161,6 +163,7 @@ class CheckoutPage extends GetView<ProductOrderController> {
                               color: base_color,
                               goToPage: ProductPage()
                           );
+                          controller.CheckBool(true);
                         } else {
                           // درخواست با خطا مواجه شد
                           print(
@@ -172,37 +175,49 @@ class CheckoutPage extends GetView<ProductOrderController> {
                               icon: Icons.sentiment_very_dissatisfied_sharp,
                               color: Colors.redAccent,
                           );
+                          controller.CheckBool(true);
                         };
                       }catch(e){
-                        return showMyDialog(
+                          showMyDialog(
                       context: context,
                       text: "!لطفا از اتصال به اینترنت خود مطمئن شوید",
                       icon: Icons.signal_cellular_connected_no_internet_0_bar,
                       color: base_colorli,
-                      );}
+                      );
+                          controller.CheckBool(true);
+                      }
                     },
                     backgroundColor: Colors.indigo,
-                    child: AnimatedCrossFade(
-                      firstChild: Text(
-                        'تکمیل سفارش',
-                        style:
-                        titleW2,
-                      ),
-                      secondChild: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'چند لحظه صبر کنید ',
-                            style:
-                            titleW2,
+                    child: GetBuilder<ProductOrderController>(
+                      builder: (controller) {
+                        return AnimatedCrossFade(
+                          firstChild: Center(
+                            child: Text(
+                              'تکمیل سفارش',
+                              style:
+                              titleW2,
+                            ),
                           ),
-                          LoadingAnimationWidget.staggeredDotsWave(
-                              color: Colors.white, size: 20),
-                        ],
-                      ),
-                      crossFadeState:
-                      controller.isFirst.value != true ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                      duration: Duration(milliseconds: 100),
+                          secondChild: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'چند لحظه صبر کنید ',
+                                style:
+                                titleW2,
+                              ),
+                              LoadingAnimationWidget.staggeredDotsWave(
+                                  color: Colors.white, size: 20),
+                            ],
+                          ),
+                          crossFadeState:
+                          controller.isFirst ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                          duration: Duration(milliseconds: 200),
+                          firstCurve: Easing.emphasizedAccelerate,
+                          secondCurve: Easing.emphasizedDecelerate,
+
+                        );
+                      }
                     ),
                   ),
                 ),

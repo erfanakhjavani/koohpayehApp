@@ -21,7 +21,7 @@ class Store_list extends GetView<listShopController> {
           appBar: AppBar(
             scrolledUnderElevation: 0,
             flexibleSpace: Padding(
-              padding: const EdgeInsets.only(left: 10, right: 47),
+              padding: const EdgeInsets.only(left: 10, right: 47,top: 10, bottom:5),
               child: TextField(
                 cursorColor: base_color,
                 onChanged: (value) {
@@ -31,9 +31,9 @@ class Store_list extends GetView<listShopController> {
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
                           style: BorderStyle.solid, color: base_color),
-                      borderRadius: BorderRadius.all(Radius.circular(50))),
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
                   hintText: "جستجو فروشگاه",
-                  hintStyle: titleg3,
+                  hintStyle: titleg4,
                 ),
               ),
             ),
