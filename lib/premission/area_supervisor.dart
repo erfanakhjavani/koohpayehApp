@@ -6,7 +6,7 @@ import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_ar
 import 'package:koohpayeh/features/presentions/area_supervisor/profile/Profile_a_sv.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/work_to_do/work_to_do.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/dashboard/dashboard_a_sv.dart';
-import 'package:koohpayeh/features/presentions/text_style.dart';
+import 'package:koohpayeh/features/presentions/style.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 

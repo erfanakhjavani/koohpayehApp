@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:koohpayeh/model/shared_pref.dart';
 
 import '../../../../login.dart';
-import '../../text_style.dart';
+import '../../style.dart';
 
 class Profile extends GetView<shareData> {
 

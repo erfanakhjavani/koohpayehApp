@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/list_shop_controller.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/list_store/product_order.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/edit_shop.dart';
-import 'package:koohpayeh/features/presentions/text_style.dart';
+import 'package:koohpayeh/features/presentions/style.dart';
+import 'package:koohpayeh/features/presentions/try_again.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -15,6 +16,7 @@ class store_detail extends GetView<listShopController> {
 
 
   final String? storeName;
+  final int? id;
   final String? malekName;
   final String? address;
   final String? phone;
@@ -35,6 +37,7 @@ class store_detail extends GetView<listShopController> {
 
   store_detail({
     required this.image,
+    required this.id,
     required this.storeName,
     required this.address,
     required this.phone,
@@ -110,11 +113,11 @@ class store_detail extends GetView<listShopController> {
               future: controller.futurePart,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                      child: LoadingAnimationWidget.inkDrop(
-                          color: Colors.green, size: 30));
+                  return Loading();
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('لطفا اینترنت خود را متصل کنید'));
+                  return TryWidget(text: 'لطفا اینترنت خود را متصل کنید',
+                      lottieName: "disconnect",
+                      repeat: true);
                 } else {
                   return GetBuilder<listShopController>(builder: (controller) {
                     return SingleChildScrollView(
@@ -154,7 +157,7 @@ class store_detail extends GetView<listShopController> {
                                           borderRadius:
                                               BorderRadius.circular(10))),
                                   onPressed: () {
-                                    Get.to(ProductPage(),
+                                    Get.to(ProductPage(id: id),
                                         transition: Transition.topLevel);
                                   },
                                   child: Container(

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/seller_add.dart';
-import 'package:koohpayeh/features/presentions/text_style.dart';
+import 'package:koohpayeh/features/presentions/style.dart';
 
 
 import '../../../../api/create_store_api.dart';

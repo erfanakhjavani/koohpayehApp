@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/edit_shop_controller.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/seller_add.dart';
-import 'package:koohpayeh/features/presentions/text_style.dart';
+import 'package:koohpayeh/features/presentions/style.dart';
 import '../../../controller/area_supervisor_controller/create_shop_controller.dart';
 import '../../../controller/cemera_controller.dart';
 

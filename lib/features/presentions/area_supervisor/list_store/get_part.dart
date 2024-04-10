@@ -4,7 +4,7 @@ import 'package:koohpayeh/features/presentions/area_supervisor/list_store/store_
 import 'package:koohpayeh/features/presentions/try_again.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import '../../../controller/area_supervisor_controller/list_shop_controller.dart';
-import '../../text_style.dart';
+import '../../style.dart';
 
 
 

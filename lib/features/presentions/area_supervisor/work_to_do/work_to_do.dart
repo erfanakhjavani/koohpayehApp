@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/work_to_do_controller.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/create_shop.dart';
-import 'package:koohpayeh/features/presentions/text_style.dart';
+import 'package:koohpayeh/features/presentions/style.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 

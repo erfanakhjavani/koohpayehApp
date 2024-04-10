@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../features/presentions/text_style.dart';
+import '../features/presentions/style.dart';
 import '../login.dart';
 import '../model/shared_pref.dart';
 

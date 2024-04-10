@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/list_store/store_detail.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import '../../../controller/area_supervisor_controller/list_shop_controller.dart';
-import '../../text_style.dart';
+import '../../style.dart';
 import '../../try_again.dart';
 
 class Store_list extends GetView<listShopController> {
@@ -112,6 +112,7 @@ class Store_list extends GetView<listShopController> {
                                         onTap: () {
                                           Get.to(
                                               store_detail(
+                                                id: filteredStores[index].id,
                                                 address: filteredStores[index]
                                                     .address
                                                     .toString(),

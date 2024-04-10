@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/list_store/config_order.dart';
-import 'package:koohpayeh/features/presentions/text_style.dart';
+import 'package:koohpayeh/features/presentions/style.dart';
 import 'package:koohpayeh/features/presentions/try_again.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import '../../../controller/area_supervisor_controller/order_controller.dart';
 
 
 class ProductPage extends GetView<ProductOrderController> {
+  final int? id;
+
+
+
+  ProductPage({this.id});
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -126,7 +132,7 @@ class ProductPage extends GetView<ProductOrderController> {
             width: Get.width / 2,
             child: FloatingActionButton(
               onPressed: () {
-                Get.to(CheckoutPage(),transition: Transition.native);
+                Get.to(CheckoutPage(id: id,),transition: Transition.native);
               },
               backgroundColor: Color.fromRGBO(48, 121, 89, 1.0),
               child: Text(

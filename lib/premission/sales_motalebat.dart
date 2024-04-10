@@ -5,7 +5,7 @@ import 'package:koohpayeh/features/controller/area_supervisor_controller/list_sh
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../features/presentions/drawer.dart';
-import '../features/presentions/text_style.dart';
+import '../features/presentions/style.dart';
 import '../login.dart';
 import '../model/shared_pref.dart';
 

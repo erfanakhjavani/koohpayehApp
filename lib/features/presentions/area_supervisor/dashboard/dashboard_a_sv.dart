@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 
 
-import 'package:koohpayeh/features/presentions/text_style.dart';
+import 'package:koohpayeh/features/presentions/style.dart';
 
 import 'package:koohpayeh/model/shared_pref.dart';
 

@@ -1,4 +1,6 @@
 
+import 'dart:ffi';
+
 import 'package:get/get.dart';
 
 import 'package:koohpayeh/model/area_supervisor_model/product_order_model.dart';
@@ -9,6 +11,7 @@ import '../../../api/get_product.dart';
 class ProductOrderController extends GetxController {
   late Future<List<Product>> futureProduct;
   var products = <Product>[].obs;
+  late  RxBool isFirst = false.obs;
 
   @override
   void onInit() {
@@ -35,5 +38,10 @@ class ProductOrderController extends GetxController {
       products[index].orders--;
       products.refresh();
     }
+  }
+
+  void CheckBool(value){
+    isFirst.value;
+    update();
   }
 }

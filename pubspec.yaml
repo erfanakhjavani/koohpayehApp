@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: any
   shared_preferences: any
   splash_screen_view: ^3.0.0
+  http: ^0.13.3
   flutter_launcher_icons: any
   image_picker: any
   get: any
