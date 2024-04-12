@@ -161,7 +161,6 @@ class CheckoutPage extends GetView<ProductOrderController> {
                               text: "!سفارشات با موفقیت ثبت شد",
                               icon: Icons.verified,
                               color: base_color,
-                              goToPage: ProductPage()
                           );
                           controller.CheckBool(true);
                         } else {

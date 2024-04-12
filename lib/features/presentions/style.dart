@@ -115,10 +115,9 @@ TextStyle titlegr2 = TextStyle(
 
 void showMyDialog({ required BuildContext context,
   String? text,
-
   IconData? icon,
   Color? color,
-  dynamic goToPage
+
 }) {
   showDialog(
     context: context,
@@ -147,10 +146,7 @@ void showMyDialog({ required BuildContext context,
               TextButton(
                 child: Text('بستن', style: titleg2),
                 onPressed: () {
-                  if(goToPage == null){
-                    Get.back();
-                  }
-                  Get.to(goToPage);
+                  Get.back(canPop: true);
                 },
               ),
             ],

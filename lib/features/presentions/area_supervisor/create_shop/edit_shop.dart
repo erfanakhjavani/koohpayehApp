@@ -317,7 +317,7 @@ class EditShop extends GetView<editShopController> {
                               ),
                               SizedBox(width: 3),
                               Text(
-                                "افزودن فروشنده",
+                                "ویرایش یا افزودن فروشنده",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: "Irs",
