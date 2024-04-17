@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/presentions/area_supervisor/list_store/config_order.dart';
+import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_area.dart';
 import 'package:koohpayeh/features/presentions/style.dart';
 import 'package:koohpayeh/features/presentions/try_again.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import '../../../controller/area_supervisor_controller/order_controller.dart';
 
 
+
 class ProductPage extends GetView<ProductOrderController> {
   final int? id;
+  final bool? show;
 
 
 
-  ProductPage({this.id});
+  ProductPage({this.show, this.id});
 
 
   final List<Price> _items = [
-    Price("345,000", "495,000", "2,070,000",24),
-    Price("228,000", "320,000", "1,368,000",23),
-    Price("245,000", "355,000", "147,0000",22),
-    Price("165,000", "235,000", "990,000",21),
-    Price("95,000", "145,000", "1,140,000",19),
-    Price("63,000", "89,000", "756,000",18),
+    Price("395,000", "570,000", "2,370,000",24),
+    Price("273,000", "385,000", "1,638,000",23),
+    Price("285,000", "410,000", "1,710,000",22),
+    Price("198,000", "282,000", "1,188,000",21),
+    Price("115,000", "167,000", "1,380,000",19),
+    Price("77,000", "107,000", "924,000",18),
 
 
   ];
@@ -38,7 +41,7 @@ class ProductPage extends GetView<ProductOrderController> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('سفارش محصول', style: appbarWithb),
+          title: Text(show == true ? 'سفارش محصول' : "لیست محصولات (تاریخ 1403)", style: appbarWithb),
         ),
         body: Obx(() {
           if (controller.products.isEmpty) {
@@ -75,7 +78,8 @@ class ProductPage extends GetView<ProductOrderController> {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.fromLTRB(8, 0, 15, 0),
+                                        padding: show == true ? EdgeInsets.fromLTRB(8, 0, 15, 0)
+                                        : EdgeInsets.fromLTRB(8, 28, 15, 0),
                                         child: Text(
                                           product.title!
                                               .toString()
@@ -88,7 +92,7 @@ class ProductPage extends GetView<ProductOrderController> {
                                         child: Padding(
                                           padding:
                                           const EdgeInsets.only(top: 30, left: 20),
-                                          child: Row(
+                                          child: show == true ? Row(
                                             children: [
                                               IconButton(
                                                 icon: Icon(
@@ -119,7 +123,7 @@ class ProductPage extends GetView<ProductOrderController> {
                                               SizedBox(width: 10,),
                                               Text(":تعداد",style: titleg3,)
                                             ],
-                                          ),
+                                          ): null
                                         ),
                                       ),
                                     ],
@@ -163,7 +167,7 @@ class ProductPage extends GetView<ProductOrderController> {
             );
           }
         }),
-        floatingActionButton: Padding(
+        floatingActionButton: show == true ? Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
             width: Get.width / 2,
@@ -179,7 +183,24 @@ class ProductPage extends GetView<ProductOrderController> {
             ),
 
           ),
+        ) : Container(
+          width: Get.width ,
+          child: FloatingActionButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero
+            ),
+            onPressed: () {
+              Get.to(GetArea());
+            },
+            backgroundColor: Color.fromRGBO(48, 121, 89, 1.0),
+            child: Text(
+              "برای سفارش کلیک کنید!",
+              style: titleW2,
+            ),
+          ),
+
         ),
+
         floatingActionButtonLocation:
         FloatingActionButtonLocation.miniCenterDocked,
       ),

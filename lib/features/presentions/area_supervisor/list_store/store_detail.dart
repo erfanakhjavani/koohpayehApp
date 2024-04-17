@@ -152,12 +152,12 @@ class store_detail extends GetView<listShopController> {
 
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.green,
+                                      backgroundColor: base_color,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10))),
                                   onPressed: () {
-                                    Get.to(ProductPage(id: id),
+                                    Get.to(ProductPage(id: id,show: true,),
                                         transition: Transition.topLevel);
                                   },
                                   child: Container(

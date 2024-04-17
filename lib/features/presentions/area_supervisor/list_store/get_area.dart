@@ -11,11 +11,12 @@ import '../../try_again.dart';
 class GetArea extends GetView<listShopController> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Directionality(
+      textDirection: TextDirection.rtl,
       child: Scaffold(
           appBar: AppBar(
             title: Text("انتخاب منطقه",style: title1,),
-
+      
             elevation: 0,
           ),
           body: FutureBuilder(
@@ -34,11 +35,11 @@ class GetArea extends GetView<listShopController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-
-
+      
+      
                                 height: 40,
                                 decoration: BoxDecoration(
-
+      
                                     borderRadius: BorderRadius.circular(50)
                                 ),
                                 child: Padding(
@@ -64,7 +65,7 @@ class GetArea extends GetView<listShopController> {
                                   onTap: () async{
                                     controller.getPart(snapshot.data![index].id);
                                     await Get.to(GetPart(snapshot.data![index].mantaghe),transition: Transition.leftToRight);
-
+      
                                   },
                                   child: Container(
                                     height: 50,

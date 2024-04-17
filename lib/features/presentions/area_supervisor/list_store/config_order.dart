@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_area.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/product_order.dart';
 import 'package:koohpayeh/features/presentions/try_again.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
@@ -156,6 +154,7 @@ class CheckoutPage extends GetView<ProductOrderController> {
                         if (response.statusCode == 200) {
                           // درخواست با موفقیت ارسال شد
                           print('Response body: ${response.body}');
+                          Get.back();
                           showMyDialog(
                               context: context,
                               text: "!سفارشات با موفقیت ثبت شد",
