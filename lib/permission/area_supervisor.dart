@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/area_supervisor_controller.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_area.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/profile/Profile_a_sv.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/work_to_do/work_to_do.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/dashboard/dashboard_a_sv.dart';
-import 'package:koohpayeh/features/presentions/style.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/list_store/get_area.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/profile/Profile_a_sv.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/work_to_do/work_to_do.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/dashboard/dashboard_a_sv.dart';
+import 'package:koohpayeh/features/presentations/style.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 

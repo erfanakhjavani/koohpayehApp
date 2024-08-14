@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import '../features/presentations/drawer.dart';
 
-import '../features/presentions/drawer.dart';
 
-/// مدیر تولید
+/// مامور مطالبات
 
-class ProductionManager extends StatelessWidget {
+class SalesMotalebat extends StatelessWidget {
 
 
   @override
@@ -12,7 +12,7 @@ class ProductionManager extends StatelessWidget {
     return Scaffold(
       drawer: drawer(),
       body: Center(
-          child:Text("مدیر تولید")
+          child:Text("مامور مطالبات")
       ),
     );
   }

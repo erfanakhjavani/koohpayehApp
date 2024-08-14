@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/login.dart';
-import 'package:koohpayeh/premission/sales_expert.dart';
+import 'package:koohpayeh/permission/sales_expert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../features/presentions/drawer.dart';
+import '../features/presentations/drawer.dart';
 
 
 ///  مدیر ارشد

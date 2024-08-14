@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/product_order.dart';
-import 'package:koohpayeh/features/presentions/style.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/list_store/product_order.dart';
+import 'package:koohpayeh/features/presentations/style.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+
 
 
 
@@ -67,7 +67,9 @@ class Choice {
       title: 'سایت کارکنان کوهپایه',
       svg: "logo",
       color: base_color,
-      ontap: launchURL
+      ontap: ()async{
+        await launchUrlString("https://crm.koohpayeh.co");
+      }
   ),
 ];
 
@@ -101,14 +103,6 @@ class SelectCard extends StatelessWidget {
   }
 
 }
-launchURL() async {
-  const url = 'https://www.google.com';
-  if (await canLaunchUrlString(url)) {
-    await launchUrlString(
-      url,
-    );
-  } else {
-    throw 'Could not launch $url';
-  }
-}
+
+
 

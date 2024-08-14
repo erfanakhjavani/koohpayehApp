@@ -6,7 +6,7 @@ import 'package:koohpayeh/switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 
-import 'features/presentions/area_supervisor/create_shop/seller_add.dart';
+import 'features/presentations/area_supervisor/create_shop/seller_add.dart';
 
 
 void main() {

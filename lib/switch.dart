@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'package:koohpayeh/login.dart';
-import 'package:koohpayeh/premission/area_supervisor.dart';
-import 'package:koohpayeh/premission/financial_manager.dart';
-import 'package:koohpayeh/premission/production_manager.dart';
-import 'package:koohpayeh/premission/repartition_manager.dart';
-import 'package:koohpayeh/premission/sales_expert.dart';
-import 'package:koohpayeh/premission/sales_manager.dart';
-import 'package:koohpayeh/premission/sales_motalebat.dart';
-import 'package:koohpayeh/premission/super_admin.dart';
+import 'package:koohpayeh/permission/area_supervisor.dart';
+import 'package:koohpayeh/permission/financial_manager.dart';
+import 'package:koohpayeh/permission/production_manager.dart';
+import 'package:koohpayeh/permission/repartition_manager.dart';
+import 'package:koohpayeh/permission/sales_expert.dart';
+import 'package:koohpayeh/permission/sales_manager.dart';
+import 'package:koohpayeh/permission/sales_motalebat.dart';
+import 'package:koohpayeh/permission/super_admin.dart';
 
 
 

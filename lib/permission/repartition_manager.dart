@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:koohpayeh/features/presentions/drawer.dart';
 
-/// مدیر مالی
+import '../features/presentations/drawer.dart';
 
-class FinancialManager extends StatelessWidget {
+/// مدیر توزیع
+
+class RepartitionManager extends StatelessWidget {
 
 
   @override
@@ -11,7 +12,7 @@ class FinancialManager extends StatelessWidget {
     return Scaffold(
       drawer: drawer(),
       body: Center(
-          child:Text("مدیر مالی")
+          child:Text("مدیر توزیع")
       ),
     );
   }

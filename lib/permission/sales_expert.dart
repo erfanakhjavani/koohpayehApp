@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:koohpayeh/features/controller/area_supervisor_controller/list_shop_controller.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import '../features/presentions/style.dart';
+import '../features/presentations/style.dart';
 import '../login.dart';
 import '../model/shared_pref.dart';
 
-/// مدیر فروش
 
-class SalesManager extends GetView<shareData> {
+
+
+/// کارشناس فروش
+
+
+class SelesExpert extends GetView<listShopController>{
 
 
   @override
@@ -22,7 +28,23 @@ class SalesManager extends GetView<shareData> {
           backgroundColor: base_color,
           elevation: 1.5,
         ),
-        body:  Center(
+        body: FutureBuilder(
+            future: controller.futurePart,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return GetBuilder<shareData>(
+                    builder: (controller) {
+                      controller.onInit();
+                      return Center(
+                          child: LoadingAnimationWidget.inkDrop(
+                              color: Colors.green, size: 30));
+                    }
+                );
+              } else if (snapshot.hasError) {
+                return Center(child: Text('لطفا اینترنت خود را متصل کنید'));
+              } else {
+                return GetBuilder<shareData>(builder: (controller) {
+                  return Center(
                     child: Card(
                       color: Colors.transparent,
                       elevation: 0,
@@ -68,7 +90,6 @@ class SalesManager extends GetView<shareData> {
 
                                 ElevatedButton(
                                   onPressed: () {
-                                    controller.removeData();
                                     Get.offAll(Login());
                                   },
 
@@ -93,8 +114,9 @@ class SalesManager extends GetView<shareData> {
                         ),
                       ),
                     ),
-                  )
-                );
-
+                  );
+                });
+              }
+            }));
   }
 }

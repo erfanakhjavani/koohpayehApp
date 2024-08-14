@@ -1,47 +1,23 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/controller/area_supervisor_controller/edit_shop_controller.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/seller_add.dart';
-import 'package:koohpayeh/features/presentions/style.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/create_shop/seller_add.dart';
+import 'package:koohpayeh/features/presentations/style.dart';
+
+
+import '../../../../api/create_store_api.dart';
 import '../../../controller/area_supervisor_controller/create_shop_controller.dart';
 import '../../../controller/cemera_controller.dart';
 
 
 final _messengerKey = GlobalKey<ScaffoldMessengerState>();
 
-class EditShop extends GetView<editShopController> {
+class CreateShop extends StatelessWidget {
+  final String areaDetailId;
 
-  final String storeName;
-  final String malekName;
-  final String address;
-  final String phone;
-  final String phoneV;
-  final String khiabanasli;
-  final String nabsh;
-  final String bonBast;
-  final String conditionMalek;
-  final String sabegheh;
-  final String metraj;
-  final String image;
+  CreateShop({required this.areaDetailId});
 
-
-
-
-  EditShop({
-    required this.storeName,
-    required this.image,
-    required this.address,
-    required this.phone,
-    required this.phoneV,
-    required this.khiabanasli,
-    required this.nabsh,
-    required this.bonBast,
-    required this.conditionMalek,
-    required this.sabegheh,
-    required this.malekName,
-    required this.metraj,
-  });
 
 
   static TextStyle style_filed = TextStyle(
@@ -55,51 +31,44 @@ class EditShop extends GetView<editShopController> {
       color: Colors.white,
       fontWeight: FontWeight.w200);
 
-
-
+  final TextEditingController _nameStoreController = TextEditingController();
+  final TextEditingController _nameMalekController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _virphoneController = TextEditingController();
+  final TextEditingController metrazhController = TextEditingController();
+  final TextEditingController _historyController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
 
 
   @override
   Widget build(BuildContext context) {
-
-     TextEditingController nameStoreController =  TextEditingController();
-     TextEditingController nameMalekController =  TextEditingController();
-     TextEditingController phoneController =  TextEditingController();
-     TextEditingController virphoneController = TextEditingController();
-     TextEditingController metrazhController = TextEditingController();
-     TextEditingController historyController = TextEditingController();
-     TextEditingController addressController = TextEditingController();
-
-
     var width = MediaQuery.of(context).size.width;
     return ScaffoldMessenger(
         key: _messengerKey,
-        child: GetBuilder<editShopController>(
-          builder: (controller) {
-            return Directionality(
-              textDirection: TextDirection.rtl,
-              child: Scaffold(
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Scaffold(
 
-                  appBar: AppBar(
-                    leading: InkWell(
-                      onTap: () {
-                        clearDataSeller();
-                        Get.back();
-                      },
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.black45,
-                      ),
-                    ),
-                    title: Text('ویرایش فروشگاه',
-                        style: TextStyle(
-                          fontFamily: 'Irs',
-                          fontSize: 20,
-                        )),
-                    centerTitle: true,
-                  ),
-                  body: SingleChildScrollView(
+            appBar: AppBar(
+              leading: InkWell(
+                onTap: () {
+                  clearDataSeller();
+                  Get.back();
+                },
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black45,
+                ),
+              ),
+              title: Text('ایجاد فروشگاه',
+                  style: TextStyle(
+                    fontFamily: 'Irs',
+                    fontSize: 20,
+                  )),
+              centerTitle: true,
+            ),
+            body: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Padding(
                       padding: EdgeInsets.all(20),
@@ -123,9 +92,12 @@ class EditShop extends GetView<editShopController> {
                                       child: controller.load == true
                                           ? Image.file(
                                         controller.uploadImage,
-                                        fit: BoxFit.fill ,
+                                        fit: BoxFit.fill,
                                       )
-                                          : Image.network("https://crm.koohpayeh.co/storage/images/$image",fit: BoxFit.fill,)
+                                          : Icon(
+                                        CupertinoIcons.person_crop_circle,
+                                        size: 80,
+                                      ),
                                     ),
 
                                     SizedBox(
@@ -153,7 +125,8 @@ class EditShop extends GetView<editShopController> {
                                                         title: Text(
                                                             'انتخاب از گالری'),
                                                         onTap: () {
-                                                          controller.chooseImageG();
+                                                          controller
+                                                              .chooseImageG();
                                                         },
                                                       ),
                                                       ListTile(
@@ -202,23 +175,21 @@ class EditShop extends GetView<editShopController> {
                           height: 25,
                         ),
                         TextField(
-                          controller: nameStoreController,
+                          controller: _nameStoreController,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(8)),
                               ),
                               labelStyle: style_filed,
-                             labelText: 'نام فروشگاه',
-                              suffixText: storeName,
-
-                          ),
+                              labelText: 'نام فروشگاه',
+                              counterStyle: style_filed),
                         ),
                         SizedBox(
                           height: 20,
                         ),
                         TextField(
-                          controller: nameMalekController,
+                          controller: _nameMalekController,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
@@ -226,33 +197,29 @@ class EditShop extends GetView<editShopController> {
                               ),
                               labelStyle: style_filed,
                               labelText: 'نام مالک',
-                              suffixText: malekName,
                               counterStyle: style_filed),
                         ),
                         SizedBox(height: 20),
                         TextField(
-                           controller: phoneController,
+                          controller: _phoneController,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(8)),
                               ),
                               labelStyle: style_filed,
-                              suffixText: phone,
                               labelText: 'شماره تلفن',
                               counterStyle: style_filed),
                         ),
                         SizedBox(height: 20),
                         TextField(
-                          controller: virphoneController,
-
+                          controller: _virphoneController,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(8)),
                               ),
                               labelStyle: style_filed,
-                              suffixText: phoneV,
                               labelText: 'شماره تلفن مجازی',
                               counterStyle: style_filed),
                         ),
@@ -266,13 +233,12 @@ class EditShop extends GetView<editShopController> {
                             ),
                             labelStyle: style_filed,
                             labelText: 'متراژ مغازه',
-                            suffixText: metraj,
                             counterStyle: style_filed,
                           ),
                         ),
                         SizedBox(height: 20),
                         TextField(
-                          controller: historyController,
+                          controller: _historyController,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
@@ -280,19 +246,17 @@ class EditShop extends GetView<editShopController> {
                               ),
                               labelStyle: style_filed,
                               labelText: 'سابقه فروشگاه',
-                              suffixText: sabegheh,
                               counterStyle: style_filed),
                         ),
                         SizedBox(height: 20),
                         TextField(
-                          controller: addressController,
+                          controller: _addressController,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(8)),
                               ),
                               labelStyle: style_filed,
-                              suffixText: address,
                               labelText: 'آدرس فروشگاه',
                               counterStyle: style_filed),
                         ),
@@ -317,7 +281,7 @@ class EditShop extends GetView<editShopController> {
                               ),
                               SizedBox(width: 3),
                               Text(
-                                "ویرایش یا افزودن فروشنده",
+                                "افزودن فروشنده",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: "Irs",
@@ -327,6 +291,102 @@ class EditShop extends GetView<editShopController> {
                             ],
                           ),
                         ),
+                        SizedBox(height: 20),
+                        GetBuilder<createShopController>(builder: (controller) {
+                          return ExpansionTile(
+                              backgroundColor: Colors.white,
+                              shape: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(8))),
+                              title: Text(
+                                'اطلاعات فروشگاه',
+                                style: style_filed,
+                              ),
+                              children: [
+                                CheckboxListTile(
+                                  title: Text('حاشیه خیابان اصلی'),
+                                  checkboxShape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(3))),
+                                  value: controller.isSelected[0],
+                                  onChanged: (bool? value) {
+
+                                    controller.isSelected[0] = value!;
+                                    controller.select();
+
+                                  },
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                    'حاشیه خیابان فرعی',
+                                    style: style_filed,
+                                  ),
+                                  checkboxShape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(3))),
+                                  value: controller.isSelected[1],
+                                  onChanged: (bool? value) {
+
+                                    controller.isSelected[1] = value!;
+                                    controller.select();
+                                  },
+                                ),CheckboxListTile(
+                                  title: Text(
+                                    'نبش تقاطع',
+                                    style: style_filed,
+                                  ),
+                                  checkboxShape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(3))),
+                                  value: controller.isSelected[2],
+                                  onChanged: (bool? value) {
+                                    controller.isSelected[2] = value!;
+                                    controller.select();
+                                  },
+                                ),CheckboxListTile(
+                                  title: Text(
+                                    'کوچه بن بست',
+                                    style: style_filed,
+                                  ),
+                                  checkboxShape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(3))),
+                                  value: controller.isSelected[3],
+                                  onChanged: (bool? value) {
+                                    controller.isSelected[3] = value!;
+                                    controller.select();
+                                  },
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                    'مالک',
+                                    style: style_filed,
+                                  ),
+                                  checkboxShape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(3))),
+                                  value: controller.isSelected[4],
+                                  onChanged: (bool? value) {
+                                    controller.isSelected[4] = value!;
+                                    controller.select();
+                                  },
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                    'مستاجر',
+                                    style: style_filed,
+                                  ),
+                                  checkboxShape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(3))),
+                                  value: controller.isSelected[5],
+                                  onChanged: (bool? value) {
+                                    controller.isSelected[5] = value!;
+                                    controller.select();
+                                  },
+                                ),
+                              ]);
+                        }),
                         SizedBox(
                           height: 10,
                         ),
@@ -340,32 +400,37 @@ class EditShop extends GetView<editShopController> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor:
-                                              base_color,
+                                          base_color,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
                                                 15.0),
                                           ),
                                         ),
                                         onPressed: () {
-                                          if (nameStoreController.text == "") {
+                                          if (ccontroller.load == false) {
+                                            ShowMySnackBar(
+                                                context,
+                                                "لطفا عکس فروشگاه را وارد نمایید");
+                                          } else
+                                          if (_nameStoreController.text == "") {
                                             // error
                                             ShowMySnackBar(
                                                 context,
                                                 "لطفا نام فروشگاه را وارد نمایید");
                                           } else
-                                          if (nameMalekController.text == "") {
+                                          if (_nameMalekController.text == "") {
                                             // error
                                             ShowMySnackBar(
                                                 context,
                                                 "لطفا نام مالک را وارد نمایید");
                                           } else
-                                          if (phoneController.text == "") {
+                                          if (_phoneController.text == "") {
                                             // error
                                             ShowMySnackBar(
                                                 context,
                                                 "لطفا شماره تلفن را وارد نمایید");
                                           } else
-                                          if (virphoneController.text == "") {
+                                          if (_virphoneController.text == "") {
                                             // error
                                             ShowMySnackBar(context,
                                                 "لطفا شماره تلفن مجازی را وارد نمایید");
@@ -375,19 +440,48 @@ class EditShop extends GetView<editShopController> {
                                                 context,
                                                 "لطفا متراژ را وارد نمایید");
                                           } else
-                                          if (historyController.text == "") {
+                                          if (_historyController.text == "") {
                                             // error
                                             ShowMySnackBar(
                                                 context,
                                                 "لطفا سابقه فروشگاه را وارد نمایید");
                                           } else
-                                          if (addressController.text == "") {
+                                          if (_addressController.text == "") {
                                             // error
                                             ShowMySnackBar(
                                                 context,
                                                 "لطفا آدرس فروشگاه را وارد نمایید");
                                           } else {
+                                            sendCreateShopRequest(
+                                              context: context,
+                                              malekName: _nameMalekController
+                                                  .text,
+                                              imageFile: ccontroller
+                                                  .uploadImage,
+                                              phone: _phoneController.text,
+                                              address: _addressController.text,
+                                              metraj: metrazhController.text,
+                                              storeName: _nameStoreController
+                                                  .text,
+                                              majaziPhone: _virphoneController
+                                                  .text,
+                                              sabeghe: _historyController.text,
+                                              ishashiehKhiabani: controller
+                                                  .isSelected[0],
+                                              khiabanFareii: controller
+                                                  .isSelected[1],
+                                              isnabshtai: controller
+                                                  .isSelected[2],
+                                              isbonbasti: controller
+                                                  .isSelected[3],
+                                              ismaleki: controller
+                                                  .isSelected[4],
+                                              isMostajeri: controller
+                                                  .isSelected[5],
+                                              area_id: areaDetailId,
 
+
+                                            );
 
                                             //send request
                                           }
@@ -407,12 +501,9 @@ class EditShop extends GetView<editShopController> {
 
 
 
-              ),
-            );
-          }
+          ),
         ));
   }
-
 }
 
 

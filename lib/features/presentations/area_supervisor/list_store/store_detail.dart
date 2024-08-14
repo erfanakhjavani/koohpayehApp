@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:koohpayeh/features/controller/area_supervisor_controller/list_shop_controller.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/product_order.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/create_shop/edit_shop.dart';
-import 'package:koohpayeh/features/presentions/style.dart';
-import 'package:koohpayeh/features/presentions/try_again.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:photo_view/photo_view.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/list_store/product_order.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/create_shop/edit_shop.dart';
+import 'package:koohpayeh/features/presentations/style.dart';
+import 'package:koohpayeh/features/presentations/try_again.dart';
+
 
 import '../../image_viewer.dart';
 

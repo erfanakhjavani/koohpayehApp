@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../presentions/area_supervisor/create_shop/seller_add.dart';
+import '../../presentations/area_supervisor/create_shop/seller_add.dart';
 
 
 

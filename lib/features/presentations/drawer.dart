@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/presentions/style.dart';
+import 'package:koohpayeh/features/presentations/style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

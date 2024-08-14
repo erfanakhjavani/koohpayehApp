@@ -6,8 +6,8 @@ import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../features/presentions/area_supervisor/create_shop/create_shop.dart';
-import '../features/presentions/area_supervisor/create_shop/seller_add.dart';
+import '../features/presentations/area_supervisor/create_shop/create_shop.dart';
+import '../features/presentations/area_supervisor/create_shop/seller_add.dart';
 
 
 

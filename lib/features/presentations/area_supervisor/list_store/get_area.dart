@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/get_part.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/list_store/get_part.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../controller/area_supervisor_controller/list_shop_controller.dart';

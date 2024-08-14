@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/premission/sales_expert.dart';
-import 'package:koohpayeh/premission/super_admin.dart';
+import 'package:koohpayeh/permission/sales_expert.dart';
+import 'package:koohpayeh/permission/super_admin.dart';
 import 'package:koohpayeh/splash_screen.dart';
 import 'features/bindings/my_bidings.dart';
-import 'features/presentions/area_supervisor/create_shop/seller_add.dart';
+import 'features/presentations/area_supervisor/create_shop/seller_add.dart';
 import 'login.dart';
 
 

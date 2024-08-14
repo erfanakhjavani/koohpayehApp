@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:koohpayeh/features/presentions/area_supervisor/list_store/store_detail.dart';
+import 'package:koohpayeh/features/presentations/area_supervisor/list_store/store_detail.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import '../../../controller/area_supervisor_controller/list_shop_controller.dart';
 import '../../style.dart';
